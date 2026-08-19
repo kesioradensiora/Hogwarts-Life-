@@ -11,7 +11,158 @@ main{min-width:0}.top{height:72px;padding:11px 24px;border-bottom:1px solid #252
 .hero{overflow:hidden;padding:0}.art{height:235px;position:relative;background:linear-gradient(180deg,transparent 25%,#080b0f 100%),radial-gradient(circle at 74% 26%,#85847b 0 2%,#3c4143 10%,#151a1f 28%,transparent 47%),linear-gradient(150deg,#1c232a,#080b0f 67%)}.art:before{content:"";position:absolute;left:7%;bottom:0;width:70%;height:78%;background:#11171d;clip-path:polygon(0 100%,5% 60%,12% 69%,18% 45%,25% 64%,33% 30%,40% 55%,49% 18%,56% 56%,64% 37%,72% 60%,80% 27%,87% 58%,100% 100%)}.art:after{content:"✦";position:absolute;right:14%;top:15%;font-size:72px;color:#e6e0ca;opacity:.13}.hero-copy{padding:17px 20px 19px}.hero-copy p{margin:0;max-width:720px}.actions{display:flex;gap:8px;margin-top:13px}.btn{padding:9px 13px;border-radius:9px;border:1px solid #394149;background:#10161c;font-size:9px;font-weight:600}.btn:hover{border-color:#92763d}.primary{border-color:#92763b;background:linear-gradient(135deg,#4c3a17,#1d160a);color:#f6dd97}.head{display:flex;justify-content:space-between;align-items:end;gap:8px}.pill{padding:5px 8px;border:1px solid #493d27;background:#15130f;border-radius:99px;color:#d9bf78;font-size:7px}.goals,.activities{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.goal,.activity{border:1px solid #2a333a;background:#0b1015;border-radius:12px;padding:10px}.goal b,.activity b{display:block;font-size:9px;margin-top:5px}.goal small,.activity small{display:block;color:#737c83;font-size:7px;line-height:1.4;margin-top:4px}.activity{text-align:left;min-height:86px;transition:.18s}.activity:hover{transform:translateY(-2px);border-color:#8d733e;box-shadow:0 10px 25px #0008}.aicon{font-size:22px;height:30px}.event{display:grid;grid-template-columns:40px 1fr;gap:9px;padding:10px;margin-top:8px;border:1px solid #29323a;border-radius:11px;background:#0b1015}.eicon{width:40px;height:40px;display:grid;place-items:center;border:1px solid #51462c;border-radius:10px;background:#16130e;font-size:18px}.event b{font-size:9px}.event small{display:block;color:#747d84;font-size:7px;line-height:1.45;margin-top:4px}.quest{padding:10px;border:1px solid #3d3426;border-radius:11px;background:linear-gradient(135deg,#17130d,#0b1015);margin-top:8px}.quest b{font-size:9px}.quest small{display:block;color:#777f86;font-size:7px;line-height:1.45;margin-top:4px}.bottom{margin-top:14px;display:grid;grid-template-columns:repeat(6,1fr);gap:6px}.bottom button{padding:9px;border:1px solid #252e35;background:#0a0f13;border-radius:9px;color:#8a9298;font-size:8px}.bottom button:hover{border-color:#6c5830;color:#dfc982}
 .modal{position:fixed;inset:0;background:#000d;display:none;align-items:center;justify-content:center;padding:20px;z-index:50}.modal.open{display:flex}.modal-card{width:min(760px,100%);max-height:90vh;overflow:auto;background:linear-gradient(145deg,#151b21,#080b0f);border:1px solid #94783d;border-radius:20px;padding:22px;box-shadow:0 30px 100px #000}.scene{height:165px;margin:14px 0;border:1px solid #5d4e2d;border-radius:14px;display:grid;place-items:center;background:radial-gradient(circle at 70% 25%,#62635e,#262c30 28%,#0c1115 67%);font-size:70px}.choices{display:grid;gap:8px}.choice{padding:12px;border:1px solid #303940;border-radius:11px;background:#0d1419;text-align:left}.choice:hover{border-color:#9c7e40;background:#171c21}.choice b{display:block;font-size:9px}.choice small{display:block;color:#788188;font-size:7px;margin-top:4px}.close{float:right;padding:5px 9px;border:1px solid #353d43;border-radius:8px;background:#0c1115}
 @media(max-width:1150px){.layout{grid-template-columns:230px 1fr}.layout>.stack:last-child{grid-column:1/-1}}@media(max-width:800px){.app{display:block}.side{display:none}.top{padding:10px 13px}.stats{display:none}.page{padding:10px}.layout{grid-template-columns:1fr}.goals,.activities{grid-template-columns:repeat(2,1fr)}}@media(max-width:500px){.goals,.activities{grid-template-columns:1fr}}
-</style></head><body>
+</style>
+<style>
+.bottom-nav{
+  margin-top:16px;
+  padding:7px;
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:6px;
+  border:1px solid #252e35;
+  border-radius:16px;
+  background:linear-gradient(180deg,#0d1217,#080c10);
+  box-shadow:0 18px 45px #0008;
+  position:sticky;
+  bottom:10px;
+  z-index:20;
+}
+.nav-bottom{
+  min-width:0;
+  min-height:61px;
+  padding:7px 5px;
+  border:1px solid transparent;
+  border-radius:11px;
+  background:transparent;
+  color:#747d84;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:2px;
+  transition:.16s;
+}
+.nav-bottom span{font-size:18px;line-height:20px}
+.nav-bottom b{font-size:7px;letter-spacing:.06em}
+.nav-bottom small{font-size:6px;color:#555e65}
+.nav-bottom:hover{
+  background:#12181e;
+  border-color:#394149;
+  color:#d9c17d;
+  transform:translateY(-1px);
+}
+.nav-bottom.active{
+  background:linear-gradient(145deg,#211b10,#0e1114);
+  border-color:#735d32;
+  color:#efd58e;
+  box-shadow:inset 0 0 18px #8b6c2b18;
+}
+.nav-bottom.active small{color:#8e794c}
+@media(max-width:800px){
+  .bottom-nav{
+    grid-template-columns:repeat(4,1fr);
+    position:sticky;
+    bottom:6px;
+  }
+  .nav-bottom:nth-child(n+5){display:none}
+}
+@media(max-width:480px){
+  .bottom-nav{grid-template-columns:repeat(4,1fr);gap:4px}
+  .nav-bottom{min-height:55px}
+  .nav-bottom span{font-size:16px}
+  .nav-bottom b{font-size:6px}
+  .nav-bottom small{display:none}
+}
+</style>
+
+<style>
+/* ===== HOGWARTS LIFE — PREMIUM COCKPIT ===== */
+:root{
+ --goldA:#b99245;--goldB:#f0d48d;--ink:#07090c;--glass:#0b1015;
+ --line2:rgba(190,158,89,.28);--soft:#899198;
+}
+body{
+ background:
+ radial-gradient(ellipse at 68% -12%,rgba(112,98,70,.34),transparent 33%),
+ radial-gradient(ellipse at 18% 55%,rgba(38,47,54,.18),transparent 38%),
+ linear-gradient(135deg,#030405,#080b0f 58%,#040507);
+}
+.page{max-width:1560px;padding:20px 24px 26px}
+.layout{grid-template-columns:270px minmax(560px,1fr) 300px;gap:16px}
+.card{
+ border-radius:18px;
+ border-color:#293239;
+ background:
+ linear-gradient(145deg,rgba(23,29,35,.98),rgba(7,10,14,.98));
+ box-shadow:0 24px 70px rgba(0,0,0,.45),inset 0 1px rgba(255,255,255,.025);
+}
+.card.gold{border-color:rgba(154,123,57,.58)}
+.card:after{
+ content:"";position:absolute;inset:0;border-radius:18px;pointer-events:none;
+ background:linear-gradient(120deg,rgba(255,255,255,.025),transparent 35%);
+}
+.hero{box-shadow:0 28px 90px #000b}
+.hero .art{
+ height:270px;
+ background:
+ radial-gradient(circle at 75% 25%,rgba(226,220,191,.42),transparent 2.5%),
+ radial-gradient(circle at 75% 25%,rgba(93,98,98,.42),transparent 16%),
+ linear-gradient(180deg,transparent 18%,#070a0d 92%),
+ linear-gradient(145deg,#1d252c,#090d11 65%);
+}
+.hero .art:before{
+ opacity:.9;filter:drop-shadow(0 -10px 20px rgba(0,0,0,.35));
+}
+.hero .hero-copy{padding:20px 22px 22px}
+.hero h1{font-size:31px;letter-spacing:.01em}
+.hero .kicker{letter-spacing:.26em}
+.hero-copy p{font-size:9.5px;max-width:700px}
+.top{
+ height:78px;padding:11px 26px;
+ background:rgba(6,8,11,.92);backdrop-filter:blur(14px);
+}
+.crest{width:50px;height:50px;border-radius:14px;box-shadow:0 8px 28px #000}
+.title{font-size:14px;letter-spacing:.12em}
+.stats{gap:8px}.statbox{min-width:84px;padding:7px 11px;border-radius:10px}
+.statbox b{font-family:Cinzel;font-size:11px}
+.profile .portrait{
+ width:82px;height:82px;border-radius:19px;
+ box-shadow:inset 0 0 35px rgba(0,0,0,.5),0 10px 28px #0007;
+}
+.name{font-size:17px}
+.attr{padding:10px;border-radius:11px}
+.attr b{font-size:15px;color:#e5e0d4}
+.goals,.activities{gap:9px}
+.goal,.activity{
+ border-color:#2b343b;border-radius:13px;
+ background:linear-gradient(145deg,#0d1318,#090d11);
+}
+.goal:hover,.activity:hover{border-color:#7e6739}
+.goal b,.activity b{font-size:9px;color:#e7e3db}
+.activity{min-height:94px}
+.aicon{font-size:24px}
+.bottom-nav{
+ margin-top:18px;
+ border-color:#30383f;
+ background:linear-gradient(180deg,rgba(17,22,27,.96),rgba(7,10,13,.98));
+ border-radius:17px;
+ box-shadow:0 24px 60px #000b;
+}
+.nav-bottom{min-height:64px}
+.nav-bottom.active{
+ border-color:#8b703b;
+ background:linear-gradient(145deg,#211a0d,#0c1014);
+ box-shadow:inset 0 0 24px rgba(155,120,44,.12),0 5px 20px #0008;
+}
+.side{background:linear-gradient(180deg,#080b0f,#040608);box-shadow:12px 0 40px #0006}
+.menu button{border-radius:13px}
+.menu .active{border-color:#51472f;background:linear-gradient(90deg,#12171c,#0b0f13)}
+.side-bottom{background:linear-gradient(145deg,#11161b,#090d11);border-color:#423a29}
+.kicker{color:#d0ad61}
+.pill{color:#e3c77d;background:#17130d;border-color:#5d4c2b}
+.bar{height:6px;background:#1a2127}.bar i{box-shadow:0 0 10px rgba(212,174,89,.18)}
+</style>
+</head><body>
 <div class="app">
 <aside class="side"><div class="brand"><b>HOGWART LIFE</b><small>MAGICAL LIFE RPG</small></div><div class="menu">
 <button class="active"><div class="ico">🏰</div><div><b>DZIŚ</b><small>Twoje życie i aktywności</small></div></button>
@@ -31,29 +182,106 @@ main{min-width:0}.top{height:72px;padding:11px 24px;border-bottom:1px solid #252
 <div class="card"><div class="kicker">EKWIPUNEK</div><h2>🎒 Przygotowania</h2><div class="quest"><b>Na razie nic nie posiadasz.</b><small>Wszystko zacznie się od listu.</small></div></div>
 </div>
 <div class="stack">
-<div class="card hero gold"><div class="art"></div><div class="hero-copy"><div class="kicker">DZISIAJ • TWÓJ PIERWSZY WIELKI DZIEŃ</div><h1>✉️ List z Hogwartu</h1><p class="muted">Jeszcze rano wszystko było zwyczajne. Teraz na stole leży koperta z herbem Hogwartu. To pierwszy krok do zupełnie nowego życia.</p><div class="actions"><button class="btn primary" onclick="openEvent('letter')">Otwórz list</button><button class="btn" onclick="openEvent('family')">Zawołaj rodzinę</button></div></div></div>
-<div class="card"><div class="head"><div><div class="kicker">TWOJE CELE</div><h2>Na czym chcesz się dziś skupić?</h2></div><div class="pill">1 dzień</div></div><div class="goals"><div class="goal"><div>✉️</div><b>Przygotować się do Hogwartu</b><small>Wykonaj najważniejsze przygotowania przed wyjazdem.</small><div class="bar"><i style="width:10%"></i></div></div><div class="goal"><div>❤️</div><b>Spędzić czas z rodziną</b><small>Zadbaj o relacje przed rozpoczęciem nowego etapu.</small><div class="bar"><i style="width:0%"></i></div></div><div class="goal"><div>🪄</div><b>Zdobyć swoją różdżkę</b><small>Odwiedź Ollivandera na Pokątnej.</small><div class="bar"><i style="width:0%"></i></div></div></div></div>
-<div class="card"><div class="head"><div><div class="kicker">AKTYWNOŚCI</div><h2>Co możesz zrobić?</h2></div><div class="pill">14 dostępnych</div></div><div class="activities">
-<button class="activity" onclick="openEvent('letter')"><div class="aicon">✉️</div><b>Odbierz list</b><small>Otwórz wiadomość z Hogwartu.</small></button>
-<button class="activity" onclick="openEvent('family')"><div class="aicon">❤️</div><b>Porozmawiaj z rodziną</b><small>Powiedz, co czujesz.</small></button>
-<button class="activity" onclick="openEvent('diagon')"><div class="aicon">🛍️</div><b>Pokątna</b><small>Rozpocznij przygotowania.</small></button>
-<button class="activity" onclick="openEvent('gringotts')"><div class="aicon">🏦</div><b>Gringott</b><small>Sprawdź rodzinne konto.</small></button>
-<button class="activity" onclick="openEvent('wand')"><div class="aicon">🪄</div><b>Ollivander</b><small>Wybierz różdżkę.</small></button>
-<button class="activity" onclick="openEvent('robes')"><div class="aicon">🧥</div><b>Madame Malkin</b><small>Kup szkolne szaty.</small></button>
-<button class="activity" onclick="openEvent('books')"><div class="aicon">📚</div><b>Księgarnia</b><small>Skompletuj podręczniki.</small></button>
-<button class="activity" onclick="openEvent('owl')"><div class="aicon">🦉</div><b>Sklep ze zwierzętami</b><small>Wybierz sowę.</small></button>
-<button class="activity" onclick="openEvent('luggage')"><div class="aicon">🎒</div><b>Spakuj kufer</b><small>Przygotuj rzeczy.</small></button>
-<button class="activity" onclick="openEvent('station')"><div class="aicon">🚉</div><b>King's Cross</b><small>Jedź na dworzec.</small></button>
-<button class="activity" onclick="openEvent('platform')"><div class="aicon">🚂</div><b>Peron 9¾</b><small>Przejdź przez barierkę.</small></button>
-<button class="activity" onclick="openEvent('train')"><div class="aicon">🚂</div><b>Ekspres Hogwart</b><small>Wsiądź do pociągu.</small></button>
-<button class="activity" onclick="openEvent('compartment')"><div class="aicon">🚪</div><b>Wybierz przedział</b><small>Poznaj pierwszych uczniów.</small></button>
-<button class="activity" onclick="openEvent('castle')"><div class="aicon">🏰</div><b>Przyjazd do Hogwartu</b><small>Dotrzyj do zamku.</small></button>
-</div></div></div>
-<div class="stack">
+<div class="card hero gold">
+ <div class="art"></div>
+ <div class="hero-copy">
+   <div style="display:flex;justify-content:space-between;gap:10px;align-items:center">
+     <div class="kicker">DZISIAJ • TWOJA HISTORIA</div>
+     <div class="pill">ROK 1 • DZIEŃ 1</div>
+   </div>
+   <h1>✉️ List z Hogwartu</h1>
+   <p class="muted">Jeszcze dziś rano wszystko było zwyczajne. Teraz na stole leży koperta z herbem Hogwartu. To pierwszy krok do zupełnie nowego życia.</p>
+   <div class="actions">
+     <button class="btn primary" onclick="playableClick('letter')">✉️ Otwórz list</button>
+     <button class="btn" onclick="playableClick('family')">❤️ Porozmawiaj z rodziną</button>
+     <button class="btn" onclick="nextAction()">▶ Następny krok</button>
+   </div>
+ </div>
+</div>
+
+<div class="card" style="margin-top:14px">
+ <div class="head">
+   <div><div class="kicker">CELE ROKU</div><h2>To, co chcesz osiągnąć</h2></div>
+   <button class="pill" onclick="openGoalManager()">🎯 Zarządzaj</button>
+ </div>
+ <div class="goals"></div>
+</div>
+
+<div class="card" style="margin-top:14px">
+ <div class="head">
+   <div><div class="kicker">AKTYWNOŚCI</div><h2>Twój dzień</h2></div>
+   <div class="pill">25+ wydarzeń</div>
+ </div>
+ <div class="activities">
+   <button class="activity" onclick="playableClick('letter')"><div class="aicon">✉️</div><b>Odbierz list</b><small>Pierwszy krok całej historii.</small></button>
+   <button class="activity" onclick="playableClick('family')"><div class="aicon">❤️</div><b>Rodzina</b><small>Rozmowa, emocje i relacje.</small></button>
+   <button class="activity" onclick="playableClick('diagon')"><div class="aicon">🛍️</div><b>Ulica Pokątna</b><small>Rozpocznij zakupy.</small></button>
+   <button class="activity" onclick="playableClick('gringotts')"><div class="aicon">🏦</div><b>Gringott</b><small>Rodzinny skarbiec.</small></button>
+   <button class="activity" onclick="playableClick('wand')"><div class="aicon">🪄</div><b>Ollivander</b><small>Twoja pierwsza różdżka.</small></button>
+   <button class="activity" onclick="playableClick('robes')"><div class="aicon">🧥</div><b>Madame Malkin</b><small>Szaty szkolne.</small></button>
+   <button class="activity" onclick="playableClick('books')"><div class="aicon">📚</div><b>Księgarnia</b><small>Podręczniki na I rok.</small></button>
+   <button class="activity" onclick="playableClick('owl')"><div class="aicon">🦉</div><b>Sklep ze zwierzętami</b><small>Wybierz sowę.</small></button>
+   <button class="activity" onclick="playableClick('luggage')"><div class="aicon">🎒</div><b>Spakuj kufer</b><small>Przygotuj się do wyjazdu.</small></button>
+   <button class="activity" onclick="playableClick('station')"><div class="aicon">🚉</div><b>King's Cross</b><small>Jedź na dworzec.</small></button>
+   <button class="activity" onclick="playableClick('platform')"><div class="aicon">🚂</div><b>Peron 9¾</b><small>Przejdź przez barierkę.</small></button>
+   <button class="activity" onclick="playableClick('train')"><div class="aicon">🚂</div><b>Ekspres Hogwart</b><small>Wsiądź do pociągu.</small></button>
+ </div>
+ <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+   <button class="btn primary" onclick="nextAction()">▶ Następny krok historii</button>
+   <button class="btn" onclick="triggerRandomContextEvent()">✨ Losowe wydarzenie</button>
+   <button class="btn" onclick="openInventoryPlayable()">🎒 Ekwipunek</button>
+ </div>
+</div>
+</div><div class="stack">
+<div class="card gold" style="margin-top:14px">
+ <div class="kicker">ŻYWE STATYSTYKI</div>
+ <h2>Twój dzień</h2>
+ <div class="attrs">
+   <div class="attr"><span>❤️ Zdrowie</span><b id="liveHealth">100</b></div>
+   <div class="attr"><span>⚡ Energia</span><b id="liveEnergy">88</b></div>
+   <div class="attr"><span>😊 Szczęście</span><b id="liveHappy">82</b></div>
+   <div class="attr"><span>⭐ Reputacja</span><b id="liveRep">8</b></div>
+ </div>
+ <div class="barrow"><div class="barlabel"><span>❤️ ZDROWIE</span><b id="liveHealth2">100%</b></div><div class="bar"><i id="healthBar" style="width:100%"></i></div></div>
+ <div class="barrow"><div class="barlabel"><span>⚡ ENERGIA</span><b id="energyBarText">88%</b></div><div class="bar"><i id="energyBar" style="width:88%"></i></div></div>
+</div>
+
 <div class="card gold"><div class="kicker">NASTĘPNE WYDARZENIE</div><h2>✉️ Sowa nadchodzi</h2><div class="event"><div class="eicon">🦉</div><div><b>List z Hogwartu</b><small>Najważniejsza wiadomość, jaką kiedykolwiek otrzymasz.</small></div></div><div class="event"><div class="eicon">👨‍👩‍👧</div><div><b>Reakcja rodziny</b><small>Twoi bliscy będą chcieli porozmawiać o Twojej przyszłości.</small></div></div></div>
 <div class="card"><div class="kicker">HISTORIA</div><h2>Twoja podróż</h2><div class="quest"><b>🌙 Jeszcze przed Hogwartem</b><small>Twoja historia nie zaczyna się od Czapki. Zaczyna się od zwykłego dnia, który nagle przestaje być zwyczajny.</small></div><div class="quest"><b>🎯 Twoje decyzje mają znaczenie</b><small>Wybory z pierwszego dnia będą wpływać na późniejsze wydarzenia.</small></div></div>
 <div class="card"><div class="kicker">POSTĘP</div><h2>Droga do Hogwartu</h2><div class="barrow"><div class="barlabel"><span>PRZYGOTOWANIA</span><b>1 / 14</b></div><div class="bar"><i style="width:7%"></i></div></div><div class="barrow"><div class="barlabel"><span>PODRÓŻ</span><b>0 / 4</b></div><div class="bar"><i style="width:0%"></i></div></div><div class="barrow"><div class="barlabel"><span>CZAPKA</span><b>ZABLOKOWANA</b></div><div class="bar"><i style="width:0%"></i></div></div></div></div>
-</div><div class="bottom"><button>🏰 DZIŚ</button><button>🧙 POSTAĆ</button><button>📚 NAUKA</button><button>🧹 QUIDDITCH</button><button>❤️ RELACJE</button><button>🗺️ MAPA</button></div>
+</div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+<button class="btn primary" onclick="nextAction()">▶ Następny krok historii</button>
+<button class="btn" onclick="triggerRandomContextEvent()">✨ Losowe wydarzenie</button>
+<button class="btn" onclick="openInventoryPlayable()">🎒 Otwórz ekwipunek</button>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+<button class="btn" onclick="openGoalManager()">🎯 Zarządzaj celami roku</button>
+<button class="btn" onclick="advanceYear()">📅 Rozpocznij kolejny rok</button>
+</div>
+
+<div class="bottom-nav">
+  <button class="nav-bottom active" onclick="goBottom('today')">
+    <span>🏰</span><b>DZIŚ</b><small>Twoja historia</small>
+  </button>
+  <button class="nav-bottom" onclick="coming('Postać')">
+    <span>🧙</span><b>POSTAĆ</b><small>Atrybuty</small>
+  </button>
+  <button class="nav-bottom" onclick="coming('Nauka')">
+    <span>📚</span><b>NAUKA</b><small>Przedmioty</small>
+  </button>
+  <button class="nav-bottom" onclick="coming('Quidditch')">
+    <span>🧹</span><b>QUIDDITCH</b><small>Kariera</small>
+  </button>
+  <button class="nav-bottom" onclick="coming('Relacje')">
+    <span>❤️</span><b>RELACJE</b><small>Postacie</small>
+  </button>
+  <button class="nav-bottom" onclick="coming('Mapa')">
+    <span>🗺️</span><b>MAPA</b><small>Świat</small>
+  </button>
+  <button class="nav-bottom" onclick="openInventoryPlayable()">
+    <span>🎒</span><b>EKWIPUNEK</b><small>${G.inventory.length} rzeczy</small>
+  </button>
+</div>
 </section></main></div>
 <div class="modal" id="modal"><div class="modal-card" id="modalCard"></div></div>
 <script>
@@ -62,4 +290,480 @@ function openEvent(k){let e=E[k];let opts=e.slice(4);document.getElementById('mo
 function choose(k,i){let o=E[k][4+i];document.getElementById('modalCard').innerHTML='<div class="scene">'+E[k][0]+'</div><div class="kicker">TWOJA DECYZJA</div><h1>'+o[2]+'</h1><p class="muted">W pełnej wersji ta decyzja zostanie zapisana w historii i będzie wpływać na dalsze wydarzenia, relacje, statystyki i cele.</p><button class="btn primary" onclick="closeEvent()">Kontynuuj</button>'}
 function closeEvent(){document.getElementById('modal').classList.remove('open')}
 function coming(n){document.getElementById('modalCard').innerHTML='<button class="close" onclick="closeEvent()">×</button><div class="scene">✨</div><div class="kicker">MODUŁ GRY</div><h1>'+n+'</h1><p class="muted">Ten moduł jest przewidziany w pełnej wersji Hogwarts Life. Ten ekran jest bazą wizualną dla całego systemu.</p><button class="btn primary" onclick="closeEvent()">Wróć</button>';document.getElementById('modal').classList.add('open')}
-</script></body></html>
+</script>
+<style>
+/* ===== PLAYABLE GAME LAYER ===== */
+.game-overlay{position:fixed;inset:0;background:rgba(2,3,5,.78);backdrop-filter:blur(7px);z-index:100;display:none;align-items:center;justify-content:center;padding:22px}
+.game-overlay.open{display:flex}
+.game-panel{width:min(1060px,96vw);max-height:92vh;overflow:auto;background:linear-gradient(145deg,#151b22,#080b0f);border:1px solid #8f753e;border-radius:20px;box-shadow:0 35px 120px #000;position:relative}
+.game-panel:before{content:"";position:absolute;inset:7px;border:1px solid rgba(220,185,93,.08);border-radius:14px;pointer-events:none}
+.game-head{padding:18px 22px;border-bottom:1px solid #29323a;display:flex;align-items:center;gap:12px}
+.game-head .scene-symbol{width:48px;height:48px;border:1px solid #705b30;border-radius:12px;background:#15130e;display:grid;place-items:center;font-size:25px}
+.game-head h2{margin:0;font-size:18px}.game-head small{display:block;color:#737c83;font:8px Inter;margin-top:4px}
+.game-body{padding:20px 22px}
+.scene-large{height:230px;border:1px solid #5e4e2e;border-radius:15px;display:grid;place-items:center;font-size:100px;margin-bottom:16px;background:radial-gradient(circle at 70% 25%,#686960,#292f33 28%,#0c1115 68%),linear-gradient(135deg,#1b2228,#080b0f);box-shadow:inset 0 0 60px #0008}
+.choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:14px}.game-choice{padding:13px;border:1px solid #303a42;border-radius:12px;background:linear-gradient(145deg,#12191f,#0a0e12);text-align:left;transition:.16s}.game-choice:hover{transform:translateY(-2px);border-color:#a08042;background:#171d23}.game-choice b{display:block;font-size:10px}.game-choice small{display:block;color:#7d878f;font:8px Inter;line-height:1.45;margin-top:5px}
+.game-close{position:absolute;right:18px;top:16px;border:1px solid #384149;background:#0b1014;border-radius:8px;padding:5px 9px;z-index:2}
+.inventory-grid,.shop-grid,.compartment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.item-card{border:1px solid #2d373f;border-radius:12px;padding:11px;background:#0b1015}.item-card .big{font-size:27px}.item-card b{display:block;font-size:9px;margin-top:5px}.item-card small{display:block;color:#788189;font:7px Inter;line-height:1.4;margin-top:4px}.item-card button{margin-top:8px;width:100%}
+.money{color:#efd58e;font-weight:700}.story-line{padding:12px;border-left:2px solid #8c7139;background:#0d1318;border-radius:0 10px 10px 0;color:#b1b6bb;font:10px Georgia;line-height:1.6;margin:12px 0}
+.progress-mini{display:flex;gap:6px;margin:8px 0}.progress-mini span{height:5px;flex:1;border-radius:99px;background:#20272d}.progress-mini span.done{background:#b9954d}
+.toast2{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);opacity:0;z-index:200;background:#11181d;border:1px solid #94773d;border-radius:10px;padding:10px 16px;font:9px Inter;color:#eee;transition:.2s}.toast2.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:700px){.game-panel{width:100%;max-height:95vh}.choice-grid,.inventory-grid,.shop-grid,.compartment-grid{grid-template-columns:1fr}.scene-large{height:170px;font-size:70px}.game-body{padding:14px}}
+</style>
+
+<div class="game-overlay" id="gameOverlay">
+ <div class="game-panel" id="gamePanel"></div>
+</div>
+<div class="toast2" id="toast2"></div>
+
+<script>
+const GKEY="hogwarts-life-playable-v1";
+const defaultGame={
+ money:35,energy:88,happy:82,health:100,reputation:8,
+ phase:"home",step:0,
+ flags:{letter:false,family:false,diagon:false,gringotts:false,wand:false,robes:false,books:false,owl:false,luggage:false,station:false,platform:false,train:false,compartment:false,arrived:false},
+ inventory:[],relations:{family:60},history:[],wand:null,owl:null
+};
+let G=(()=>{try{return {...defaultGame,...JSON.parse(localStorage.getItem(GKEY)||"{}")}}catch(e){return {...defaultGame}}})();
+G.flags={...defaultGame.flags,...(G.flags||{})}; G.relations={...defaultGame.relations,...(G.relations||{})}; G.inventory=G.inventory||[]; G.history=G.history||[];
+function saveGame(){localStorage.setItem(GKEY,JSON.stringify(G)); syncVisibleStats()}
+function toast2(t){let e=document.getElementById("toast2");e.textContent=t;e.classList.add("show");setTimeout(()=>e.classList.remove("show"),1900)}
+function syncBottomInventory(){
+ const b=[...document.querySelectorAll(".nav-bottom")].find(x=>x.innerText.includes("EKWIPUNEK"));
+ if(b){const s=b.querySelector("small");if(s)s.textContent=(G.inventory||[]).length+" rzeczy";}
+}
+function syncVisibleStats(){
+ document.querySelectorAll(".statbox b")[0].textContent="🪙 "+G.money;
+ document.querySelectorAll(".statbox b")[1].textContent="⚡ "+G.energy;
+ document.querySelectorAll(".statbox b")[2].textContent="😊 "+G.happy; syncBottomInventory();
+}
+function closeGame(){document.getElementById("gameOverlay").classList.remove("open")}
+function openGame(){document.getElementById("gameOverlay").classList.add("open")}
+function addHistory(icon,title,text){G.history.push([icon,title,text]);if(G.history.length>30)G.history.shift()}
+function gain(item){if(!G.inventory.includes(item))G.inventory.push(item)}
+function spend(n){if(G.money<n){toast2("🪙 Nie masz wystarczającej liczby galeonów.");return false}G.money-=n;return true}
+function setFlag(k){G.flags[k]=true;G.step=Math.max(G.step,G.step+1);saveGame()}
+
+const gameScenes={
+ letter:{icon:"✉️",title:"List z Hogwartu",sub:"Dom • ranek",text:"Sowa ląduje przy oknie. W dziobie trzyma ciężką kopertę z herbem Hogwartu. Twoje nazwisko jest zapisane zielonym atramentem.",choices:[
+  ["Otwórz list","Nie możesz czekać ani chwili.",()=>{G.flags.letter=true;G.phase="family";G.happy=Math.min(100,G.happy+5);addHistory("✉️","List z Hogwartu","Otrzymałaś/eś list i zaproszenie do szkoły.");finishScene("List jest otwarty. Hogwart naprawdę istnieje.")}],
+  ["Zawołaj rodzinę","Chcesz, żeby wszyscy byli przy tym momencie.",()=>{G.flags.letter=true;G.phase="family";G.happy=Math.min(100,G.happy+3);addHistory("✉️","List z Hogwartu","Cała rodzina zobaczyła list.");finishScene("Wszyscy zbierają się wokół stołu.")}],
+  ["Obejrzyj kopertę","Zwracasz uwagę na każdy szczegół.",()=>{G.flags.letter=true;G.phase="family";addHistory("✉️","Tajemnicza koperta","Zapamiętujesz herb, pieczęć i zielony atrament.");finishScene("Zauważasz, że pieczęć jest wyjątkowo starannie wykonana.")}]
+ ]},
+ family:{icon:"❤️",title:"Rozmowa z rodziną",sub:"Dom • wspólny stół",text:"Wszyscy chcą wiedzieć, co czujesz i czego oczekujesz od Hogwartu. To pierwsza rozmowa o Twojej przyszłości.",choices:[
+  ["„Nie mogę się doczekać!”","Pokazujesz ekscytację.",()=>{G.relations.family+=8;G.happy=Math.min(100,G.happy+6);G.flags.family=true;addHistory("❤️","Rozmowa z rodziną","Rodzina zobaczyła Twoją ekscytację.");finishScene("Rodzina jest z Ciebie dumna.")}],
+  ["„Trochę się boję.”","Szczerość zamiast udawania.",()=>{G.relations.family+=10;G.happy=Math.min(100,G.happy+2);G.flags.family=true;addHistory("❤️","Szczera rozmowa","Powiedziałaś/eś rodzinie o swoich obawach.");finishScene("Bliscy uspokajają Cię i obiecują, że zawsze możesz do nich napisać.")}],
+  ["„Chcę osiągnąć coś wielkiego.”","Mówisz o swoich ambicjach.",()=>{G.relations.family+=4;G.reputation+=2;G.flags.family=true;addHistory("⭐","Ambicje","Pierwszy raz głośno mówisz o swoich planach.");finishScene("Rozmowa schodzi na to, kim możesz zostać w przyszłości.")}]
+ ]},
+ diagon:{icon:"🛍️",title:"Ulica Pokątna",sub:"Magiczny Londyn",text:"Przechodzisz przez ukryte wejście. Zwyczajny świat znika. Wokół Ciebie pojawiają się sklepy, czarodzieje i setki rzeczy, których wcześniej nie widziałaś/eś.",choices:[
+  ["🏦 Gringott","Najpierw pieniądze i rodzinny skarbiec.",()=>openShop("gringotts")],
+  ["🪄 Ollivander","Chcesz zobaczyć różdżki.",()=>openShop("wand")],
+  ["📚 Esy i Floresy","Czas skompletować podręczniki.",()=>openShop("books")],
+  ["🧥 Madame Malkin","Potrzebujesz szkolnych szat.",()=>openShop("robes")],
+  ["🦉 Sklep ze zwierzętami","Może znajdziesz towarzysza.",()=>openShop("owl")],
+  ["🚶 Zwiedzaj Pokątną","Rozejrzyj się i zobacz, co jeszcze tu jest.",()=>{G.happy=Math.min(100,G.happy+3);addHistory("🛍️","Pierwsze kroki na Pokątnej","Zaczynasz poznawać magiczny świat.");saveGame();finishScene("Spędzasz chwilę na odkrywaniu Pokątnej.")}]
+ ]},
+ luggage:{icon:"🎒",title:"Pakowanie kufra",sub:"Dom • wieczór",text:"Na łóżku leżą wszystkie rzeczy kupione przed wyjazdem. Możesz przygotować kufer dokładnie tak, jak chcesz.",choices:[
+  ["Spakuj wszystko","Nic nie może zostać w domu.",()=>{G.flags.luggage=true;gain("Spakowany kufer");G.energy=Math.max(0,G.energy-5);addHistory("🎒","Spakowany kufer","Wszystko jest gotowe do wyjazdu.");finishScene("Kufer jest gotowy.")}],
+  ["Spakuj tylko najważniejsze rzeczy","Zostawiasz trochę miejsca.",()=>{G.flags.luggage=true;gain("Spakowany kufer");addHistory("🎒","Spakowany kufer","Zostawiłaś/eś trochę wolnego miejsca.");finishScene("Kufer jest gotowy, a trochę miejsca pozostaje na pamiątki.")}]
+ ]},
+ station:{icon:"🚉",title:"King's Cross",sub:"1 września • dworzec",text:"Wysiadasz z samochodu. Wiesz, że za chwilę będziesz musiała/musiał znaleźć drogę na peron, którego mugole nie widzą.",choices:[
+  ["Najpierw pożegnaj się z rodziną","Chcesz zapamiętać ten moment.",()=>{G.flags.station=true;G.relations.family+=5;addHistory("❤️","Pożegnanie","Żegnasz się z rodziną przed rozpoczęciem nowego życia.");finishScene("To krótkie pożegnanie zostanie z Tobą na długo.")}],
+  ["Od razu szukaj peronu","Nie możesz się spóźnić.",()=>{G.flags.station=true;addHistory("🚉","King's Cross","Ruszysz prosto w stronę peronu.");finishScene("Zaczynasz szukać drogi na peron 9¾.")}]
+ ]},
+ platform:{icon:"🚂",title:"Peron 9¾",sub:"King's Cross",text:"Przed Tobą barierka między peronami 9 i 10. Widzisz innych czarodziejów, którzy znikają w niej jeden po drugim.",choices:[
+  ["Przejdź pewnym krokiem","Nie chcesz się zawahać.",()=>{G.flags.platform=true;addHistory("🚂","Peron 9¾","Przeszłaś/eś przez magiczną barierkę.");finishScene("Po drugiej stronie czeka Ekspres Hogwart.")}],
+  ["Najpierw obserwuj innych","Chcesz mieć pewność.",()=>{G.flags.platform=true;addHistory("🚂","Peron 9¾","Po chwili odważasz się przejść.");finishScene("Barierka okazuje się prawdziwym przejściem do świata czarodziejów.")}]
+ ]},
+ train:{icon:"🚂",title:"Ekspres Hogwart",sub:"Peron 9¾",text:"Czerwony pociąg czeka na pierwszorocznych. Rodzina zostaje na peronie.",choices:[
+  ["Szukaj spokojnego przedziału","Chcesz oswoić się z nową sytuacją.",()=>{G.flags.train=true;addHistory("🚂","Ekspres Hogwart","Wsiadasz do pociągu.");finishScene("Wsiadasz do pociągu i ruszasz korytarzem.")}],
+  ["Od razu poznawaj innych","Chcesz rozpocząć nowe znajomości.",()=>{G.flags.train=true;G.reputation+=1;addHistory("🤝","Pierwsze znajomości","Od razu próbujesz rozmawiać z innymi.");finishScene("Już na peronie zaczynają się pierwsze rozmowy.")}]
+ ]},
+ compartment:{icon:"🚪",title:"Wybierz przedział",sub:"Ekspres Hogwart",text:"Korytarz jest pełen uczniów. W kilku przedziałach są wolne miejsca.",choices:[
+  ["Pusty przedział","Spokojny początek.",()=>{G.flags.compartment=true;addHistory("🚪","Przedział","Wybrałaś/eś spokojny przedział.");finishScene("Masz chwilę, żeby zebrać myśli.")}],
+  ["Przedział z pierwszorocznymi","Może poznasz kogoś ważnego.",()=>{G.flags.compartment=true;G.happy=Math.min(100,G.happy+4);addHistory("🤝","Nowe znajomości","Dołączasz do innych pierwszorocznych.");finishScene("Pierwsze rozmowy zaczynają się jeszcze przed przyjazdem.")}],
+  ["Szukaj najciekawszego przedziału","Nie chcesz wybierać przypadkowo.",()=>{G.flags.compartment=true;G.reputation+=2;addHistory("⭐","Ciekawość","Szukasz ludzi, którzy mogą Cię zainteresować.");finishScene("Trafiasz do grupy, której rozmowa od razu Cię zaciekawia.")}]
+ ]},
+ castle:{icon:"🏰",title:"Przyjazd do Hogwartu",sub:"Jezioro • noc",text:"Z łodzi widzisz ogromny zamek. Światła odbijają się w jeziorze. To pierwszy widok Hogwartu, który zapamiętasz na zawsze.",choices:[
+  ["Patrz na zamek","Chcesz zapamiętać każdy szczegół.",()=>arriveHogwarts()],
+  ["Rozglądaj się za innymi","Chcesz zobaczyć reakcje pozostałych.",()=>arriveHogwarts()]
+ ]}
+};
+
+function renderGameScene(s){
+ document.getElementById("gamePanel").innerHTML=`<button class="game-close" onclick="closeGame()">×</button>
+ <div class="game-head"><div class="scene-symbol">${s.icon}</div><div><h2>${s.title}</h2><small>${s.sub}</small></div></div>
+ <div class="game-body"><div class="scene-large">${s.icon}</div><div class="story-line">${s.text}</div><h3>Co robisz?</h3>
+ <div class="choice-grid">${s.choices.map((c,i)=>`<button class="game-choice" onclick="chooseGame(${i})"><b>${c[0]}</b><small>${c[1]}</small></button>`).join("")}</div></div>`;
+ window.__choices=s.choices;
+ openGame();
+}
+function chooseGame(i){window.__choices[i][2]()}
+function finishScene(msg){saveGame();renderGameScene({icon:"✨",title:"Twoja decyzja",sub:"Historia została zapisana",text:msg,choices:[["Kontynuuj","Wróć do panelu Dziś.",()=>{closeGame();refreshPremiumState()}]]})}
+function startScene(k){if(!gameScenes[k])return;renderGameScene(gameScenes[k])}
+
+function openShop(type){
+ let data={
+ gringotts:{icon:"🏦",title:"Gringott",text:"Rodzinny skarbiec. Możesz odebrać pieniądze albo dowiedzieć się czegoś o historii swojej rodziny.",items:[
+  ["🪙","Odbierz 20 galeonów","Powiększ budżet na zakupy.",20,()=>{G.money+=20;G.flags.gringotts=true;addHistory("🏦","Gringott","Odebrałaś/eś pieniądze ze skarbca.");saveGame();finishScene("Otrzymujesz 20 galeonów.")}]
+ ]},
+ wand:{icon:"🪄",title:"Ollivander",text:"W sklepie panuje cisza. Ollivander obserwuje Cię uważnie.",items:[
+  ["🌿","Ostrokrzew • pióro feniksa","Różdżka o wyrazistym charakterze.",12,()=>buy("wand","Różdżka — ostrokrzew i pióro feniksa",12)],
+  ["🌳","Jesion • włos jednorożca","Stabilna i posłuszna.",10,()=>buy("wand","Różdżka — jesion i włos jednorożca",10)],
+  ["🌰","Orzech • smocze serce","Silna, wymagająca różdżka.",15,()=>buy("wand","Różdżka — orzech i smocze serce",15)]
+ ]},
+ robes:{icon:"🧥",title:"Madame Malkin",text:"Miara zaczarowana sama dopasowuje szkolne szaty.",items:[
+  ["🧥","Szaty pierwszoroczne","Podstawowy komplet.",6,()=>buy("robes","Szaty Hogwartu",6)],
+  ["🧣","Szaty + zimowy płaszcz","Dodatkowa ochrona na chłodne dni.",10,()=>buy("robes","Szaty Hogwartu + płaszcz",10)]
+ ]},
+ books:{icon:"📚",title:"Esy i Floresy",text:"Przed Tobą lista podręczników na pierwszy rok.",items:[
+  ["📚","Komplet podręczników","Wszystko wymagane przez szkołę.",8,()=>buy("books","Komplet podręczników — I rok",8)],
+  ["📖","Komplet + księga dodatkowa","Trochę wiedzy ponad program.",11,()=>buy("books","Komplet podręczników + dodatkowa księga",11)]
+ ]},
+ owl:{icon:"🦉",title:"Sklep ze zwierzętami",text:"Kilka sów patrzy na Ciebie z zainteresowaniem.",items:[
+  ["🦉","Sowa spokojna","Łagodny i wierny towarzysz.",7,()=>buy("owl","Sowa — spokojna",7)],
+  ["🦉","Sowa ciekawska","Bardziej aktywna i charakterystyczna.",9,()=>buy("owl","Sowa — ciekawska",9)]
+ ]}
+ }[type];
+ document.getElementById("gamePanel").innerHTML=`<button class="game-close" onclick="closeGame()">×</button><div class="game-head"><div class="scene-symbol">${data.icon}</div><div><h2>${data.title}</h2><small>Pokątna • 🪙 ${G.money} galeonów</small></div></div><div class="game-body"><div class="scene-large">${data.icon}</div><div class="story-line">${data.text}</div><div class="shop-grid">${data.items.map((x,i)=>`<div class="item-card"><div class="big">${x[0]}</div><b>${x[1]}</b><small>${x[2]}</small><button class="btn primary" onclick="buyItem(${i})">🪙 ${x[3]} • Wybierz</button></div>`).join("")}</div></div>`;
+ window.__shopItems=data.items;openGame();
+}
+function buyItem(i){window.__shopItems[i][4]()}
+function buy(type,item,cost){
+ if(!spend(cost))return;
+ G.flags[type]=true;gain(item);if(type==="wand")G.wand=item;if(type==="owl")G.owl=item;
+ addHistory(type==="wand"?"🪄":type==="owl"?"🦉":"🛍️","Zakup",item);saveGame();
+ finishScene(item+" trafia do Twojego ekwipunku.");
+}
+function nextAction(){
+ if(!G.flags.letter)return startScene("letter");
+ if(!G.flags.family)return startScene("family");
+ if(!G.flags.diagon)return startScene("diagon");
+ if(!G.flags.wand)return openShop("wand");
+ if(!G.flags.robes)return openShop("robes");
+ if(!G.flags.books)return openShop("books");
+ if(!G.flags.owl)return openShop("owl");
+ if(!G.flags.luggage)return startScene("luggage");
+ if(!G.flags.station)return startScene("station");
+ if(!G.flags.platform)return startScene("platform");
+ if(!G.flags.train)return startScene("train");
+ if(!G.flags.compartment)return startScene("compartment");
+ if(!G.flags.arrived)return startScene("castle");
+ startSortingPlayable();
+}
+function arriveHogwarts(){
+ G.flags.arrived=true;G.phase="hogwarts";addHistory("🏰","Przyjazd do Hogwartu","Po raz pierwszy widzisz zamek.");saveGame();
+ document.getElementById("gamePanel").innerHTML=`<button class="game-close" onclick="closeGame()">×</button><div class="game-head"><div class="scene-symbol">🏰</div><div><h2>Witaj w Hogwarcie</h2><small>Wielka Sala • pierwsza noc</small></div></div><div class="game-body"><div class="scene-large">🏰</div><div class="story-line">Zamek jest jeszcze piękniejszy z bliska. Pierwszoroczni wchodzą do Wielkiej Sali. Przed Tobą ceremonia, która zdecyduje, gdzie spędzisz najbliższe lata.</div><button class="btn primary" onclick="startSortingPlayable()">🎩 Podejdź do Czapki Przydziału</button></div>`;
+ openGame();
+}
+const sortQuestions=[
+ ["Masz szansę osiągnąć sukces, ale nikt nie dowie się, że to Twoja zasługa. Co robisz?",["Biorę szansę dla siebie.","Wykorzystuję ją dla innych.","Najpierw poznaję wszystkie możliwości.","Pytam bliskich o zdanie."]],
+ ["Przyjaciel złamał zasadę. Co robisz?",["Biorę część winy na siebie.","Mówię prawdę, ale pomagam.","Szukam sprytnego rozwiązania.","Najpierw pytam, dlaczego."]],
+ ["Co najbardziej cenisz?",["Odwagę.","Wiedzę.","Ambicję.","Lojalność."]],
+ ["W niebezpieczeństwie…",["Działam.","Analizuję.","Szukam przewagi.","Pilnuję innych."]],
+ ["Masz wolny wieczór.",["Przygoda.","Książka.","Planowanie przyszłości.","Spotkanie ze znajomymi."]],
+ ["Przegrywasz.",["Próbuję jeszcze raz.","Analizuję błąd.","Zmienię strategię.","Najważniejsi są ludzie."]],
+ ["Ktoś Cię niesprawiedliwie oskarża.",["Konfrontuję go.","Zbieram dowody.","Odwracam sytuację.","Wyjaśniam spokojnie."]],
+ ["Dostajesz tajemniczy przedmiot.",["Sprawdzam go.","Szukam informacji.","Myślę, jak go wykorzystać.","Pokazuję go komuś zaufanemu."]],
+ ["W grupie nikt nie chce być liderem.",["Ja poprowadzę.","Zbieram pomysły.","Tworzę plan.","Dbam o każdego."]],
+ ["W przyszłości chcesz…",["Przeżyć wielką przygodę.","Odkrywać nowe rzeczy.","Osiągnąć wielkość.","Mieć szczęśliwy dom."]],
+ ["Wybór: bezpieczeństwo czy ryzyko?",["Ryzykuję.","Sprawdzam fakty.","Ryzykuję z planem.","Bezpieczeństwo."]],
+ ["Ktoś potrzebuje pomocy.",["Wchodzę w sytuację.","Rozpoznaję problem.","Szukam rozwiązania.","Nie zostawiam go samego."]],
+ ["Jak chcesz być zapamiętany/a?",["Odważny/a.","Mądry/a.","Wielki/a.","Godny/a zaufania."]],
+ ["Co robisz, gdy nikt Cię nie obserwuje?",["Robię to, co uważam za słuszne.","Uczę się.","Pracuję nad przyszłością.","Pomagam komuś."]],
+ ["Co jest trudniejsze?",["Przyznać się do strachu.","Przyznać, że czegoś nie wiem.","Przyznać się do porażki.","Zostawić kogoś samego."]]
+];
+let si=0,ss=[0,0,0,0];
+function startSortingPlayable(){if(!G.flags.arrived)return toast2("🏰 Najpierw dotrzyj do Hogwartu.");si=0;ss=[0,0,0,0];askSort()}
+function askSort(){let q=sortQuestions[si],opts=q[1].map((t,i)=>[t,i]).sort(()=>Math.random()-.5);document.getElementById("gamePanel").innerHTML=`<button class="game-close" onclick="closeGame()">×</button><div class="game-head"><div class="scene-symbol">🎩</div><div><h2>Czapka Przydziału</h2><small>Pytanie ${si+1} / 15 • obserwacja Twojej osobowości</small></div></div><div class="game-body"><div class="progress-mini">${Array.from({length:15},(_,i)=>`<span class="${i<si?'done':''}"></span>`).join("")}</div><div class="scene-large">🎩</div><div class="story-line">„Hmm… bardzo interesujące. Zobaczmy, co naprawdę jest dla Ciebie ważne…”<br><br>${q[0]}</div><div class="choice-grid">${opts.map(o=>`<button class="game-choice" onclick="sortAnswer(${o[1]})"><b>${o[0]}</b><small>Twoja odpowiedź wpłynie na decyzję Czapki.</small></button>`).join("")}</div></div>`;openGame()}
+function sortAnswer(i){ss[i]+=1+Math.floor(Math.random()*3);si++;if(si<15)return askSort();let max=Math.max(...ss),houses=["Gryffindor","Ravenclaw","Slytherin","Hufflepuff"],house=houses[ss.indexOf(max)];G.house=house;saveGame();document.getElementById("gamePanel").innerHTML=`<button class="game-close" onclick="closeGame()">×</button><div class="game-head"><div class="scene-symbol">🎩</div><div><h2>Ceremonia Przydziału</h2><small>Twój dom został wybrany</small></div></div><div class="game-body"><div class="scene-large">${house==="Gryffindor"?"🦁":house==="Ravenclaw"?"🦅":house==="Slytherin"?"🐍":"🦡"}</div><h1>${house}</h1><p class="muted">Czapka przeanalizowała wszystkie 15 odpowiedzi. To dopiero początek — dalej rozpoczniemy prawdziwy I rok, z celami, lekcjami, relacjami, Quidditchem i wydarzeniami.</p><button class="btn primary" onclick="closeGame();refreshPremiumState()">Rozpocznij I rok</button></div>`}
+function refreshPremiumState(){
+ document.querySelector(".side-bottom").innerHTML="AKTUALNA FAZA<b>"+(G.house||"PRZED HOGWARTEM")+"</b>Dzień "+(G.flags.arrived?"2":"1")+" • historia zapisana";
+ syncVisibleStats();
+}
+function playableClick(key){if(key==="letter")startScene("letter");else if(key==="family")startScene("family");else if(key==="diagon")startScene("diagon");else if(key==="gringotts")openShop("gringotts");else if(key==="wand")openShop("wand");else if(key==="robes")openShop("robes");else if(key==="books")openShop("books");else if(key==="owl")openShop("owl");else if(key==="luggage")startScene("luggage");else if(key==="station")startScene("station");else if(key==="platform")startScene("platform");else if(key==="train")startScene("train");else if(key==="compartment")startScene("compartment");else if(key==="castle")startScene("castle")}
+</script>
+
+<script>
+/* FINAL PLAYABLE BRIDGE — overrides the demo handlers */
+document.addEventListener('DOMContentLoaded', () => {
+  const map = {
+    letter:'letter', family:'family', diagon:'diagon', gringotts:'gringotts',
+    wand:'wand', robes:'robes', books:'books', owl:'owl', luggage:'luggage',
+    station:'station', platform:'platform', train:'train',
+    compartment:'compartment', castle:'castle'
+  };
+  document.querySelectorAll('[onclick]').forEach(el => {
+    const m = el.getAttribute('onclick')?.match(/(?:openEvent|playableClick)\('([^']+)'\)/);
+    if (m && map[m[1]]) {
+      el.setAttribute('onclick', `playableClick('${map[m[1]]}')`);
+    }
+  });
+  syncVisibleStats();
+  refreshPremiumState();
+});
+</script>
+
+<script>
+/* ===== LARGE CONTEXTUAL EVENT LIBRARY ===== */
+const EXTRA_EVENTS = [
+  ["owl_arrival","🦉","SOWA PRZYNOSI LIST","Słyszysz trzepot skrzydeł przy oknie.","Otwierasz okno","Wpływ: +szczęście","Sowa zostawia list.", "Zawołaj rodzinę","Wpływ: +relacja","Wszyscy zbierają się razem."],
+  ["letter_seal","🔒","TAJEMNICZA PIECZĘĆ","Pieczęć wygląda inaczej niż zwykły herb.","Dotknij pieczęci","Wpływ: +ciekawość","Przez chwilę czujesz ciepło.", "Nie dotykaj","Wpływ: +ostrożność","Postanawiasz niczego nie ryzykować."],
+  ["parents_proud","❤️","DUMA RODZINY","Rodzice patrzą na Ciebie inaczej niż jeszcze rano.","Opowiedz o swoich marzeniach","Wpływ: +relacja","Rozmowa o przyszłości trwa długo.", "Zmień temat","Wpływ: +spokój","Nie chcesz jeszcze mówić o planach."],
+  ["future","⭐","KIM CHCESZ ZOSTAĆ?","Pytanie o przyszłość pada niespodziewanie.","Chcę zostać kimś wielkim","Wpływ: +ambicja","Rodzina zaczyna pytać o szczegóły.", "Jeszcze nie wiem","Wpływ: +swoboda","Wiesz, że masz mnóstwo czasu."],
+  ["diagon_first","🛍️","PIERWSZY WIDOK POKĄTNEJ","Wszystko jest nowe i trochę przytłaczające.","Idź za tłumem","Wpływ: +bezpieczeństwo","Szybko orientujesz się w ulicy.", "Zbadaj boczną uliczkę","Wpływ: +ciekawość","Odkrywasz mały sklep, którego wcześniej nie zauważyłaś/eś."],
+  ["gringotts_legacy","🏦","RODZINNY SKARBIEC","Goblin wspomina, że Twoja rodzina ma dłuższą historię w świecie magii.","Pytaj dalej","Wpływ: +wiedza","Dowiadujesz się czegoś ważnego.", "Nie wnikaj","Wpływ: +ostrożność","Postanawiasz wrócić do tego później."],
+  ["wand_reaction","🪄","RÓŻDŻKA REAGUJE","Jedna z różdżek porusza się, zanim jej dotkniesz.","Spróbuj","Wpływ: +magia","W sklepie rozlega się charakterystyczny trzask.", "Poczekaj na Ollivandera","Wpływ: +rozwaga","Ollivander uśmiecha się tajemniczo."],
+  ["wand_failure","🪄","ŻADNA NIE PASUJE","Kolejne różdżki nie reagują tak, jak oczekujesz.","Nie poddawaj się","Wpływ: +determinacja","Próbujesz dalej.", "Poproś o radę","Wpływ: +pokora","Ollivander zmienia strategię."],
+  ["robe_style","🧥","PIERWSZE SZATY","W lustrze widzisz się po raz pierwszy w szkolnym stroju.","Klasyczne","Wpływ: +pewność","Czujesz, że naprawdę zaczynasz być uczniem.", "Dodaj własny detal","Wpływ: +indywidualność","Twoje szaty są trochę inne od wszystkich."],
+  ["book_choice","📚","DODATKOWA KSIĘGA","Sprzedawca proponuje Ci książkę spoza listy.","Kup ją","Wpływ: +wiedza","Wydajesz pieniądze, ale zyskujesz ciekawą lekturę.", "Oszczędzaj","Wpływ: +finanse","Zostawiasz pieniądze na później."],
+  ["owl_bond","🦉","PIERWSZE SPOTKANIE Z SOWĄ","Jedna sowa nie spuszcza z Ciebie wzroku.","Podejdź","Wpływ: +relacja","Sowa pozwala się dotknąć.", "Obserwuj z daleka","Wpływ: +ostrożność","Czekasz, aż sama podejdzie."],
+  ["family_money","🪙","BUDŻET NA POKĄTNĄ","Rodzina pyta, jak zamierzasz gospodarować pieniędzmi.","Wydam tylko na potrzebne rzeczy","Wpływ: +dyscyplina","Dostajesz pochwałę za rozsądek.", "Chcę zobaczyć wszystko","Wpływ: +radość","Rodzina ostrzega Cię przed impulsywnymi zakupami."],
+  ["packing_note","🎒","LISTA W KUFRZE","Znajdujesz kartkę z listą rzeczy, których nie możesz zapomnieć.","Sprawdź wszystko dwa razy","Wpływ: +dyscyplina","Kufer jest perfekcyjnie przygotowany.", "Zdaj się na pamięć","Wpływ: +swoboda","Jedna rzecz prawie zostaje w domu."],
+  ["goodbye","❤️","POŻEGNANIE","Nadszedł moment, którego wszyscy trochę się obawiali.","Przytul rodzinę","Wpływ: +relacja","To bardzo emocjonalna chwila.", "Udawaj, że wszystko jest w porządku","Wpływ: +odwaga","Nie chcesz pokazać, że jest Ci trudno."],
+  ["platform_wait","🚂","OCZEKIWANIE NA PERONIE","Pozostaje kilka minut do odjazdu.","Poznaj innych","Wpływ: +reputacja","Rozmawiasz z kilkoma uczniami.", "Zostań z rodziną","Wpływ: +relacja","Ostatnie minuty spędzasz z bliskimi."],
+  ["train_lost","🚪","ZGUBIONY W POCIĄGU","Korytarz jest pełen uczniów. Nagle nie wiesz, gdzie jesteś.","Zapytaj o drogę","Wpływ: +relacja","Ktoś pomaga Ci znaleźć przedział.", "Szukaj samodzielnie","Wpływ: +niezależność","Po chwili odnajdujesz drogę."],
+  ["train_snack","🍫","WÓZEK Z PRZEKĄSKAMI","Wózek z jedzeniem przejeżdża obok Twojego przedziału.","Kup coś","Wpływ: -galeony +szczęście","Pierwsza podróż ma smak słodyczy.", "Oszczędzaj","Wpływ: +finanse","Postanawiasz poczekać."],
+  ["train_friend","🤝","PIERWSZA ZNAJOMOŚĆ","Ktoś zagląda do Twojego przedziału i pyta, czy może usiąść.","Zapraszam","Wpływ: +relacja","Rozpoczyna się rozmowa, która może mieć dalszy ciąg.", "Najpierw pytam, kim jest","Wpływ: +ostrożność","Najpierw chcesz coś o tej osobie wiedzieć."],
+  ["train_rival","⚡","PIERWSZE STARCIE","W korytarzu ktoś rzuca nieprzyjemny komentarz.","Odpowiedz","Wpływ: +odwaga / -relacja","Nie pozwalasz się zastraszyć.", "Odpuść","Wpływ: +spokój","Nie chcesz zaczynać konfliktu pierwszego dnia."],
+  ["castle_first","🏰","PIERWSZY WIDOK ZAMKU","Wielkie wieże wyłaniają się zza jeziora.","Zatrzymaj się i patrz","Wpływ: +szczęście","Zapamiętujesz ten obraz.", "Rozglądaj się za uczniami","Wpływ: +relacja","Zaczynasz zauważać przyszłych kolegów."],
+  ["great_hall","✨","WIELKA SALA","Świece unoszą się nad głową. Wszyscy czekają na Ciebie i innych pierwszorocznych.","Patrz na stoły domów","Wpływ: +ciekawość","Próbujesz zgadnąć, gdzie trafisz.", "Skup się na Czapce","Wpływ: +skupienie","Nie chcesz myśleć o niczym innym."],
+  ["sorting_nerves","🎩","NERWY PRZED CZAPKĄ","Twoje nazwisko jest coraz bliżej na liście.","Oddychaj spokojnie","Wpływ: +opanowanie","Próbujesz zebrać myśli.", "Myśl o tym, czego chcesz","Wpływ: +ambicja","Przypominasz sobie swoje najważniejsze wartości."]
+];
+
+function openExtraEvent(idx){
+  const e=EXTRA_EVENTS[idx];
+  const choices=[
+    {t:e[4],s:e[5],r:e[6]},
+    {t:e[7],s:e[8],r:e[9]}
+  ];
+  document.getElementById("gamePanel").innerHTML=`<button class="game-close" onclick="closeGame()">×</button>
+  <div class="game-head"><div class="scene-symbol">${e[1]}</div><div><h2>${e[2]}</h2><small>Wydarzenie losowe • decyzja ma konsekwencje</small></div></div>
+  <div class="game-body"><div class="scene-large">${e[1]}</div><div class="story-line">${e[3]}</div>
+  <div class="choice-grid">${choices.map((c,i)=>`<button class="game-choice" onclick="resolveExtra(${idx},${i})"><b>${c.t}</b><small>${c.s}</small></button>`).join("")}</div></div>`;
+  openGame();
+}
+function resolveExtra(idx,i){
+ const e=EXTRA_EVENTS[idx], c=i===0?[e[4],e[5],e[6]]:[e[7],e[8],e[9]];
+ if(c[1].includes("szczęście"))G.happy=Math.min(100,G.happy+4);
+ if(c[1].includes("relacja"))G.relations.family=Math.min(100,(G.relations.family||60)+5);
+ if(c[1].includes("odwaga")||c[1].includes("ambicja"))G.reputation+=2;
+ if(c[1].includes("wiedza"))G.reputation+=1;
+ if(c[1].includes("galeon"))G.money=Math.max(0,G.money-2);
+ addHistory(e[1],e[2],c[2]); saveGame();
+ finishScene(c[2]+" Twoja decyzja została zapisana w historii.");
+}
+function triggerRandomContextEvent(){
+ const available=EXTRA_EVENTS.filter((_,i)=>!G.history.some(h=>h[1]===EXTRA_EVENTS[i][2]));
+ if(!available.length)return;
+ const e=available[Math.floor(Math.random()*available.length)];
+ openExtraEvent(EXTRA_EVENTS.indexOf(e));
+}
+</script>
+
+<script>
+function coming(name){
+ const modules={
+  "Postać":["🧙","POSTAĆ","Pełny profil bohatera: atrybuty, cechy charakteru, historia decyzji, relacje, reputacja, pieniądze i rozwój."],
+  "Nauka":["📚","NAUKA","Przedmioty, oceny, frekwencja, egzaminy, praktyczne zadania i konsekwencje nauki."],
+  "Quidditch":["🧹","QUIDDITCH","Treningi, pozycje, statystyki, próby do drużyny, mecze szkolne i turnieje między szkołami."],
+  "Relacje":["❤️","RELACJE","Każda ważna postać ma własną relację, historię, poziom zaufania i reakcje na Twoje decyzje."],
+  "Mapa":["🗺️","MAPA","Hogwart i magiczny świat jako zbiór odwiedzanych lokacji oraz wydarzeń."],
+  "Ekwipunek":["🎒","EKWIPUNEK","Przedmioty zdobyte podczas gry, pieniądze, różdżka, sowa i rzeczy wymagane przez wydarzenia."]
+ }[name]||["✨",name,"Moduł gry."];
+ document.getElementById("gamePanel").innerHTML=`<button class="game-close" onclick="closeGame()">×</button><div class="game-head"><div class="scene-symbol">${modules[0]}</div><div><h2>${modules[1]}</h2><small>Moduł Hogwarts Life</small></div></div><div class="game-body"><div class="scene-large">${modules[0]}</div><div class="story-line">${modules[2]}</div><button class="btn primary" onclick="closeGame()">Wróć do Dziś</button></div>`;
+ openGame();
+}
+</script>
+
+<script>
+function openInventoryPlayable(){
+ const items=G.inventory.length?G.inventory.map(x=>`<div class="item-card"><div class="big">✨</div><b>${x}</b><small>Przedmiot zapisany w Twoim ekwipunku.</small></div>`).join(""):`<div class="story-line">Twój ekwipunek jest jeszcze pusty. Pierwsze rzeczy zdobędziesz na Pokątnej.</div>`;
+ document.getElementById("gamePanel").innerHTML=`<button class="game-close" onclick="closeGame()">×</button><div class="game-head"><div class="scene-symbol">🎒</div><div><h2>Twój ekwipunek</h2><small>🪙 ${G.money} galeonów • ${G.inventory.length} przedmiotów</small></div></div><div class="game-body"><div class="inventory-grid">${items}</div><div style="margin-top:15px"><button class="btn primary" onclick="closeGame()">Wróć</button></div></div>`;
+ openGame();
+}
+</script>
+
+<style>
+.goal.completed{border-color:#6d8d63;background:linear-gradient(145deg,#111a15,#0a0f0d)}
+.goal .goal-action{margin-top:8px;width:100%;font-size:7px;padding:6px 7px;border-radius:7px;border:1px solid #394149;background:#10161b}
+.goal.completed .goal-action{border-color:#55734d;color:#b8d8ae}
+.goal-progress{font-size:7px;color:#9ca49b;margin-top:5px;display:flex;justify-content:space-between}
+.goal-pool{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}
+.goal-option{padding:10px;border:1px solid #2c353c;border-radius:10px;background:#0b1015;text-align:left}
+.goal-option:hover{border-color:#8f743d}
+.goal-option b{font-size:8px}.goal-option small{display:block;color:#788189;font-size:7px;line-height:1.4;margin-top:4px}
+.year-banner{padding:10px 12px;border:1px solid #4b3d26;border-radius:10px;background:#141109;margin-bottom:10px}
+.year-banner b{font:600 11px Cinzel;color:#efd58e}.year-banner small{display:block;color:#777f86;font-size:7px;margin-top:3px}
+</style>
+<script>
+/* ===== DYNAMIC YEARLY GOALS ===== */
+const YEAR_GOALS=[
+ {id:"letters",icon:"✉️",name:"Poznaj świat czarodziejów",desc:"Wykonaj ważne wydarzenia pierwszego etapu.",target:5,kind:"flags",reward:8},
+ {id:"family",icon:"❤️",name:"Zbuduj silną więź z rodziną",desc:"Dbaj o rodzinę i podejmuj wspierające decyzje.",target:4,kind:"family",reward:10},
+ {id:"money",icon:"🪙",name:"Naucz się gospodarować pieniędzmi",desc:"Zdobądź i rozsądnie wykorzystuj galeony.",target:3,kind:"money",reward:7},
+ {id:"wand",icon:"🪄",name:"Znajdź swoją magiczną drogę",desc:"Zdobądź różdżkę i podejmij decyzje związane z magią.",target:2,kind:"wand",reward:9},
+ {id:"books",icon:"📚",name:"Przygotuj się do nauki",desc:"Skompletuj wyposażenie i rozwijaj wiedzę.",target:4,kind:"items",reward:8},
+ {id:"friends",icon:"🤝",name:"Poznaj nowych ludzi",desc:"Podejmuj decyzje budujące relacje.",target:4,kind:"social",reward:9},
+ {id:"brave",icon:"🦁",name:"Wykazuj się odwagą",desc:"Podejmuj trudne decyzje zamiast ich unikać.",target:5,kind:"brave",reward:12},
+ {id:"curious",icon:"🔍",name:"Bądź ciekawska/y",desc:"Odkrywaj dodatkowe wydarzenia i pytaj o świat.",target:5,kind:"curious",reward:10},
+ {id:"discipline",icon:"🎯",name:"Bądź konsekwentna/y",desc:"Kończ rozpoczęte przygotowania.",target:6,kind:"flags",reward:11},
+ {id:"owl",icon:"🦉",name:"Zbuduj więź ze swoją sową",desc:"Zdobądź sowę i rozwijaj tę relację.",target:3,kind:"owl",reward:8},
+ {id:"explorer",icon:"🗺️",name:"Odkrywaj magiczny świat",desc:"Odwiedzaj różne miejsca i uruchamiaj wydarzenia.",target:6,kind:"explore",reward:10},
+ {id:"story",icon:"📜",name:"Stwórz własną historię",desc:"Zapisuj ważne decyzje i wydarzenia.",target:8,kind:"history",reward:12},
+ {id:"happy",icon:"😊",name:"Dbaj o swoje szczęście",desc:"Utrzymuj wysokie morale mimo nowych wyzwań.",target:80,kind:"happy",reward:8},
+ {id:"reputation",icon:"⭐",name:"Zbuduj pierwszą reputację",desc:"Zdobądź uznanie dzięki swoim decyzjom.",target:20,kind:"reputation",reward:12},
+ {id:"independent",icon:"🧭",name:"Stań się bardziej samodzielna/y",desc:"Podejmuj decyzje bez ciągłego polegania na innych.",target:5,kind:"independent",reward:10},
+ {id:"prepared",icon:"🎒",name:"Bądź przygotowana/y na Hogwart",desc:"Zdobądź i przygotuj wszystkie podstawowe rzeczy.",target:5,kind:"prepared",reward:12},
+ {id:"tradition",icon:"🏰",name:"Poznaj tradycje Hogwartu",desc:"Doświadcz najważniejszych pierwszych chwil.",target:5,kind:"castle",reward:10},
+ {id:"risk",icon:"⚡",name:"Spróbuj czegoś nowego",desc:"Podejmij decyzje, których normalnie byś nie podjęła/ął.",target:4,kind:"brave",reward:9},
+ {id:"kindness",icon:"💛",name:"Bądź pomocna/y",desc:"Wybieraj rozwiązania wspierające innych.",target:5,kind:"family",reward:9},
+ {id:"knowledge",icon:"🧠",name:"Rozwijaj wiedzę",desc:"Korzystaj z okazji do nauki i zadawania pytań.",target:6,kind:"curious",reward:11},
+ {id:"memory",icon:"🌙",name:"Stwórz wspomnienia",desc:"Nie przechodź obojętnie obok ważnych chwil.",target:6,kind:"history",reward:9},
+ {id:"confidence",icon:"✨",name:"Zbuduj pewność siebie",desc:"Podejmuj decyzje zgodne z własnym zdaniem.",target:5,kind:"independent",reward:10},
+ {id:"balance",icon:"⚖️",name:"Znajdź równowagę",desc:"Łącz relacje, obowiązki, pieniądze i przyjemności.",target:6,kind:"flags",reward:12},
+ {id:"firstyear",icon:"🏆",name:"Wykorzystaj pierwszy rok",desc:"Zrealizuj najważniejsze kamienie milowe roku.",target:8,kind:"year",reward:20}
+];
+
+function ensureGoals(){
+ if(!G.year)G.year=1;
+ if(!G.yearGoals || !Array.isArray(G.yearGoals) || G.yearGoals.length!==3){
+   renewYearGoals(false);
+ }
+}
+function renewYearGoals(show=true){
+ const pool=[...YEAR_GOALS].sort(()=>Math.random()-.5);
+ G.yearGoals=pool.slice(0,3).map(x=>({...x,progress:0,done:false}));
+ G.goalYear=G.year||1;
+ G.goalCompletedCount=0;
+ saveGame();
+ renderGoals();
+ if(show) openGoalManager(true);
+}
+function goalProgress(g){
+ const f=G.flags||{}, hist=(G.history||[]).length;
+ switch(g.kind){
+  case"flags":return Object.values(f).filter(Boolean).length;
+  case"family":return Math.min(g.target,Math.floor((G.relations?.family||60)/20)-2+Object.values(f).filter(Boolean).length%3);
+  case"money":return Math.min(g.target,Math.floor((G.money||0)/15));
+  case"wand":return (G.wand?2:0);
+  case"items":return Math.min(g.target,(G.inventory||[]).length);
+  case"social":return Math.min(g.target,Math.floor((hist)/5));
+  case"brave":return Math.min(g.target,Math.floor((G.reputation||0)/4));
+  case"curious":return Math.min(g.target,Math.floor(hist/3));
+  case"owl":return G.owl?3:0;
+  case"explore":return Math.min(g.target,Object.values(f).filter(Boolean).length);
+  case"history":return Math.min(g.target,hist);
+  case"happy":return G.happy||0;
+  case"reputation":return G.reputation||0;
+  case"independent":return Math.min(g.target,Math.floor(hist/3));
+  case"prepared":return Math.min(g.target,(G.inventory||[]).length+(f.luggage?1:0));
+  case"castle":return Math.min(g.target,(f.arrived?5:Object.values(f).filter(Boolean).length));
+  case"year":return Math.min(g.target,Object.values(f).filter(Boolean).length+Math.floor(hist/2));
+  default:return 0;
+ }
+}
+function updateGoals(){
+ ensureGoals();
+ let changed=false;
+ G.yearGoals.forEach(g=>{
+   if(g.done)return;
+   const p=Math.min(g.target,goalProgress(g));
+   if(p!==g.progress){g.progress=p;changed=true}
+   if(g.progress>=g.target){
+     g.done=true;G.money+=g.reward;G.reputation+=2;G.goalCompletedCount=(G.goalCompletedCount||0)+1;
+     addHistory("🏆","Ukończone zadanie roku",g.name+" • nagroda: "+g.reward+" galeonów");
+     toast2("🏆 Ukończono: "+g.name+" • +"+g.reward+" 🪙");
+     changed=true;
+   }
+ });
+ if(changed)saveGame();
+ renderGoals();
+}
+function renderGoals(){
+ const cards=document.querySelector(".goals");
+ if(!cards||!G.yearGoals)return;
+ cards.innerHTML=G.yearGoals.map((g,i)=>{
+  const pct=Math.round(Math.min(100,g.progress/g.target*100));
+  return `<div class="goal ${g.done?'completed':''}">
+   <div style="font-size:19px">${g.icon}</div><b>${g.name}</b><small>${g.desc}</small>
+   <div class="goal-progress"><span>${g.done?'✓ UKOŃCZONE':g.progress+' / '+g.target}</span><span>${g.done?'':pct+'%'}</span></div>
+   <div class="bar"><i style="width:${pct}%"></i></div>
+   <button class="goal-action" onclick="openGoalDetail(${i})">${g.done?'🏆 Zobacz nagrodę':'🎯 Zobacz zadanie'}</button>
+  </div>`
+ }).join("");
+ const pill=document.querySelector(".head .pill");
+ if(pill)pill.textContent=`Rok ${G.year} • ${G.goalCompletedCount||0}/3 ukończone`;
+}
+function openGoalDetail(i){
+ const g=G.yearGoals[i];
+ document.getElementById("gamePanel").innerHTML=`<button class="game-close" onclick="closeGame()">×</button>
+ <div class="game-head"><div class="scene-symbol">${g.icon}</div><div><h2>${g.name}</h2><small>Cel na rok ${G.year} • postęp jest zapisywany automatycznie</small></div></div>
+ <div class="game-body"><div class="scene-large">${g.icon}</div><div class="story-line">${g.desc}<br><br><b>Postęp: ${g.progress}/${g.target}</b><br>Każde odpowiednie wydarzenie i decyzja może przybliżać Cię do celu. Cele nie są identyczne w każdym życiu.</div>
+ <button class="btn primary" onclick="closeGame()">Wróć do gry</button></div>`;
+ openGame();
+}
+function openGoalManager(first=false){
+ document.getElementById("gamePanel").innerHTML=`<button class="game-close" onclick="closeGame()">×</button>
+ <div class="game-head"><div class="scene-symbol">🎯</div><div><h2>Cele na rok ${G.year}</h2><small>Wybierz 3 z dużej puli • cele wpływają na wydarzenia</small></div></div>
+ <div class="game-body"><div class="story-line">Na początku każdego roku możesz wybrać inne cele. Wydarzenia i okazje w tym roku będą miały większą szansę wspierać wybrane przez Ciebie kierunki.</div>
+ <div class="goal-pool">${YEAR_GOALS.map((g,i)=>`<button class="goal-option" onclick="replaceGoal(${i})"><b>${g.icon} ${g.name}</b><small>${g.desc}</small></button>`).join("")}</div>
+ <div style="margin-top:14px"><button class="btn primary" onclick="closeGame()">Zatwierdź i wróć</button></div></div>`;
+ openGame();
+}
+function replaceGoal(poolIndex){
+ const replacement=YEAR_GOALS[poolIndex];
+ if(G.yearGoals.some(g=>g.id===replacement.id)){toast2("Ten cel jest już wybrany.");return}
+ // Replace the least-progressed selected goal.
+ let idx=G.yearGoals.reduce((best,g,i)=>g.progress/g.target<G.yearGoals[best].progress/G.yearGoals[best].target?i:best,0);
+ G.yearGoals[idx]={...replacement,progress:0,done:false};
+ saveGame();renderGoals();openGoalManager();
+ toast2("🎯 Zmieniono cel na: "+replacement.name);
+}
+function advanceYear(){
+ if(!G.year)G.year=1;
+ if(G.year>=7){toast2("🎓 To już koniec szkoły.");return}
+ G.year++;
+ G.flags={letter:false,family:false,diagon:false,gringotts:false,wand:false,robes:false,books:false,owl:false,luggage:false,station:false,platform:false,train:false,compartment:false,arrived:false};
+ G.history=[];G.yearGoals=null;renewYearGoals(false);saveGame();renderGoals();refreshPremiumState();
+ toast2("📅 Rozpoczęto rok "+G.year+" — wybierz nowe cele.");
+ openGoalManager();
+}
+function addGoalYearButton(){
+ const h=document.querySelector(".head");
+ if(!h||h.querySelector(".goal-change"))return;
+ const b=document.createElement("button");b.className="btn goal-change";b.textContent="🎯 Zmień cele";
+ b.onclick=()=>openGoalManager();h.appendChild(b);
+}
+const baseSaveGame=window.saveGame;
+window.saveGame=function(){ if(baseSaveGame)baseSaveGame(); };
+const oldFinishScene=window.finishScene;
+window.finishScene=function(msg){ if(oldFinishScene)oldFinishScene(msg); setTimeout(updateGoals,30); };
+const oldRefresh=window.refreshPremiumState;
+window.refreshPremiumState=function(){if(oldRefresh)oldRefresh();ensureGoals();updateGoals();addGoalYearButton();};
+document.addEventListener("DOMContentLoaded",()=>{ensureGoals();updateGoals();addGoalYearButton()});
+</script>
+
+<script>
+function goBottom(section){
+  document.querySelectorAll(".nav-bottom").forEach(x=>x.classList.remove("active"));
+  const btn=[...document.querySelectorAll(".nav-bottom")].find(x=>x.innerText.includes("DZIŚ"));
+  if(btn)btn.classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+</script>
+
+<script>
+function refreshLiveCockpit(){
+ const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};
+ set("liveHealth",G.health||100);set("liveEnergy",G.energy||0);set("liveHappy",G.happy||0);set("liveRep",G.reputation||0);
+ set("liveHealth2",(G.health||100)+"%");set("energyBarText",(G.energy||0)+"%");
+ const h=document.getElementById("healthBar"),en=document.getElementById("energyBar");
+ if(h)h.style.width=Math.max(0,Math.min(100,G.health||0))+"%";
+ if(en)en.style.width=Math.max(0,Math.min(100,G.energy||0))+"%";
+}
+const _refreshGoals=window.renderGoals;
+window.renderGoals=function(){if(_refreshGoals)_refreshGoals();refreshLiveCockpit()};
+document.addEventListener("DOMContentLoaded",()=>setTimeout(refreshLiveCockpit,80));
+</script>
+</body></html>
