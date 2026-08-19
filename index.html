@@ -162,7 +162,195 @@ body{
 .pill{color:#e3c77d;background:#17130d;border-color:#5d4c2b}
 .bar{height:6px;background:#1a2127}.bar i{box-shadow:0 0 10px rgba(212,174,89,.18)}
 </style>
+
+<style>
+/* ===== V8 EXPANDED COCKPIT ===== */
+.page{max-width:1720px;padding:18px 22px 30px}
+.layout{grid-template-columns:285px minmax(720px,1fr) 330px;gap:18px}
+.hero .art{height:315px}
+.hero h1{font-size:35px}
+.hero-copy{min-height:190px}
+.kpi-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}
+.kpi{padding:10px 12px;border:1px solid #2b343b;border-radius:12px;background:linear-gradient(145deg,#10161b,#090d11)}
+.kpi span{display:block;color:#777f85;font-size:7px;letter-spacing:.1em}
+.kpi b{display:block;margin-top:4px;font:15px Cinzel;color:#e6d7ae}
+.cockpit-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;margin-top:14px}
+.cockpit-grid .card{margin-top:0!important}
+.today-list{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.today-item{padding:9px 10px;border:1px solid #293239;border-radius:10px;background:#0b1015}
+.today-item b{font-size:8px}.today-item small{display:block;margin-top:4px;color:#737c82;font-size:7px}
+.progress-row{margin:9px 0}.progress-label{display:flex;justify-content:space-between;font-size:7px;color:#8d969b}.progress-label b{color:#d5c17f}
+.progress-track{height:6px;background:#1a2228;border-radius:99px;overflow:hidden;margin-top:4px}.progress-track i{display:block;height:100%;background:linear-gradient(90deg,#6d5730,#d5b765);border-radius:99px}
+@media(max-width:1200px){.layout{grid-template-columns:240px minmax(600px,1fr)}.layout>.stack:last-child{grid-column:1/-1}.cockpit-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:800px){.layout{display:block}.cockpit-grid{grid-template-columns:1fr}.kpi-strip{grid-template-columns:repeat(2,1fr)}.today-list{grid-template-columns:1fr}}
+</style>
+
+<style>
+/* ===== V10 — CINEMATIC HOGWARTS COCKPIT ===== */
+body{
+ background:
+ radial-gradient(circle at 72% 8%,rgba(126,101,55,.14),transparent 25%),
+ radial-gradient(circle at 12% 48%,rgba(38,51,61,.15),transparent 32%),
+ linear-gradient(135deg,#020304 0%,#080c10 55%,#030506 100%);
+}
+.page{max-width:1780px;padding:18px 24px 32px}
+.top{
+ height:76px;padding:10px 24px;
+ border-bottom:1px solid rgba(180,147,76,.18);
+ background:linear-gradient(180deg,rgba(7,10,13,.96),rgba(5,7,10,.88));
+ backdrop-filter:blur(18px);
+}
+.layout{grid-template-columns:278px minmax(760px,1fr) 320px;gap:18px}
+.card{
+ position:relative;overflow:hidden;
+ border:1px solid #273139;
+ border-radius:18px;
+ background:linear-gradient(145deg,rgba(17,23,29,.98),rgba(6,9,12,.99));
+ box-shadow:0 22px 65px rgba(0,0,0,.46),inset 0 1px rgba(255,255,255,.025);
+}
+.card.gold{
+ border-color:rgba(151,119,55,.58);
+ box-shadow:0 24px 75px rgba(0,0,0,.5),inset 0 1px rgba(239,211,139,.04);
+}
+.card:before{
+ content:"";position:absolute;inset:0;pointer-events:none;
+ background:linear-gradient(125deg,rgba(255,255,255,.025),transparent 28%,transparent 75%,rgba(205,168,83,.018));
+}
+.hero{
+ border-radius:22px;
+ border-color:#3d3b31;
+ box-shadow:0 30px 100px rgba(0,0,0,.68);
+}
+.hero .art{
+ height:345px;
+ position:relative;
+ background:
+ radial-gradient(circle at 78% 27%,rgba(236,223,185,.42),transparent 2%),
+ radial-gradient(circle at 78% 27%,rgba(124,129,124,.32),transparent 14%),
+ linear-gradient(180deg,rgba(7,10,12,.05),rgba(3,5,7,.88)),
+ linear-gradient(145deg,#263139 0%,#12191f 48%,#070a0d 100%);
+}
+.hero .art:after{
+ content:"";position:absolute;inset:0;
+ background:
+ linear-gradient(90deg,rgba(0,0,0,.55),transparent 42%),
+ linear-gradient(0deg,rgba(0,0,0,.72),transparent 50%);
+}
+.hero .hero-copy{padding:22px 24px 24px;position:relative}
+.hero .kicker{font-size:8px;letter-spacing:.3em;color:#d2b56c}
+.hero h1{font-size:38px;line-height:1.05;letter-spacing:.01em;text-shadow:0 5px 25px #000}
+.hero .muted{font-size:10px;line-height:1.65;max-width:780px;color:#a3aaae}
+.hero .pill{font-size:7px;padding:6px 9px}
+.actions{gap:8px}
+.btn{
+ border-radius:10px;
+ border:1px solid #303a41;
+ background:linear-gradient(180deg,#171e24,#0b1014);
+ box-shadow:0 5px 18px #0006;
+}
+.btn.primary{
+ border-color:#826837;
+ background:linear-gradient(180deg,#9a7a3e,#5e4926);
+ color:#fff4d4;
+ box-shadow:0 7px 25px rgba(107,83,38,.25),inset 0 1px rgba(255,255,255,.18);
+}
+.head{padding:15px 17px 12px}
+.head h2{font-size:16px}
+.kicker{letter-spacing:.22em;color:#c9a95e}
+.story-meta{gap:6px}
+.story-tag{background:#0b1015;border-color:#303941;color:#969fa5}
+.story-tag.gold{background:#161108;border-color:#69552d;color:#e1c479}
+.cockpit-grid{gap:12px}
+.today-list{gap:7px}
+.today-item{
+ padding:10px 11px;
+ border-radius:11px;
+ background:linear-gradient(145deg,#0e1419,#090d11);
+ border-color:#29343b;
+}
+.today-item:hover{border-color:#6d5934}
+.kpi-strip{gap:9px}
+.kpi{
+ padding:11px 12px;border-radius:12px;
+ background:linear-gradient(145deg,#11181d,#080c10);
+ border-color:#2b353c;
+}
+.kpi b{font-size:16px}
+.activity{
+ min-height:104px;
+ border-radius:14px;
+ background:linear-gradient(145deg,#0e151a,#090d11);
+}
+.activity:hover{transform:translateY(-1px);border-color:#756039}
+.goal{border-radius:13px}
+.goal:hover{border-color:#756039}
+.side{
+ background:linear-gradient(180deg,#070a0d,#030506);
+ border-right:1px solid #20282e;
+ box-shadow:15px 0 50px #0007;
+}
+.profile{
+ border-color:#343c41;
+ background:linear-gradient(145deg,#10161b,#070a0d);
+}
+.profile .portrait{width:88px;height:88px;border-radius:20px}
+.name{font-size:18px}
+.attr{
+ border-radius:11px;
+ background:linear-gradient(145deg,#10171c,#0a0f13);
+}
+.menu button{
+ border-radius:11px;
+ border-color:transparent;
+}
+.menu .active{
+ background:linear-gradient(90deg,#17130d,#0d1115);
+ border-color:#57472c;
+ color:#e6c97c;
+ box-shadow:inset 3px 0 #a98545;
+}
+.bottom-nav{
+ margin-top:18px;
+ padding:7px;
+ border-radius:18px;
+ border-color:#303940;
+ background:linear-gradient(180deg,rgba(15,21,26,.98),rgba(5,8,11,.99));
+ box-shadow:0 25px 70px #000b;
+}
+.nav-bottom{min-height:66px;border-radius:12px}
+.nav-bottom.active{
+ background:linear-gradient(145deg,#211a0d,#0a0e12);
+ border-color:#8a703d;
+ color:#f0d38b;
+ box-shadow:inset 0 0 25px rgba(180,140,59,.1),0 5px 18px #0008;
+}
+.progress-track{height:7px;background:#171f25}
+.progress-track i{background:linear-gradient(90deg,#5e4a28,#d6b867);box-shadow:0 0 12px rgba(201,163,77,.18)}
+.game-panel,.modal{
+ border:1px solid #5c4b2b;
+ background:linear-gradient(145deg,#11171d,#070a0d);
+ box-shadow:0 30px 120px #000e;
+}
+.game-choice{
+ border:1px solid #303b42;
+ background:linear-gradient(145deg,#11181e,#080c10);
+ border-radius:13px;
+}
+.game-choice:hover{
+ border-color:#94743a;
+ background:linear-gradient(145deg,#19170f,#0b1014);
+ transform:translateY(-1px);
+}
+</style>
 </head><body>
+<div class="cinematic-vignette"></div>
+<style>
+.cinematic-vignette{
+ position:fixed;inset:0;pointer-events:none;z-index:999;
+ box-shadow:inset 0 0 140px rgba(0,0,0,.62);
+}
+</style>
+
 <div class="app">
 <aside class="side"><div class="brand"><b>HOGWART LIFE</b><small>MAGICAL LIFE RPG</small></div><div class="menu">
 <button class="active"><div class="ico">🏰</div><div><b>DZIŚ</b><small>Twoje życie i aktywności</small></div></button>
@@ -183,19 +371,29 @@ body{
 </div>
 <div class="stack">
 <div class="card hero gold">
- <div class="art"></div>
+ <div class="art">
+ <div style="position:absolute;left:24px;bottom:22px;z-index:2">
+  <div style="font:7px Inter;letter-spacing:.28em;color:#cbb16d">HOGWARTS • TWOJE ŻYCIE • ROK SZKOLNY</div>
+  <div style="font:22px Cinzel;color:#eee6d2;margin-top:5px;text-shadow:0 5px 25px #000">Świat reaguje na Twoje wybory.</div>
+ </div>
+</div>
  <div class="hero-copy">
    <div style="display:flex;justify-content:space-between;gap:10px;align-items:center">
      <div class="kicker">DZISIAJ • TWOJA HISTORIA</div>
      <div class="pill">ROK 1 • DZIEŃ 1</div>
    </div>
-   <h1>✉️ List z Hogwartu</h1>
-   <p class="muted">Jeszcze dziś rano wszystko było zwyczajne. Teraz na stole leży koperta z herbem Hogwartu. To pierwszy krok do zupełnie nowego życia.</p>
-   <div class="actions">
-     <button class="btn primary" onclick="playableClick('letter')">✉️ Otwórz list</button>
-     <button class="btn" onclick="playableClick('family')">❤️ Porozmawiaj z rodziną</button>
-     <button class="btn" onclick="nextAction()">▶ Następny krok</button>
-   </div>
+   <h1 id="heroStoryTitle">✉️ List z Hogwartu</h1>
+   <p class="muted" id="heroStoryText">Jeszcze dziś rano wszystko było zwyczajne. Teraz na stole leży koperta z herbem Hogwartu. To pierwszy krok do zupełnie nowego życia.</p>
+   <div id="heroDecisionState" class="story-meta">
+ <span class="story-tag gold">📜 HISTORIA W TOKU</span>
+ <span class="story-tag" id="heroLastDecision">Brak decyzji</span>
+ <span class="story-tag" id="heroFaction">✨ Neutralna ścieżka</span>
+</div>
+<div class="actions" id="heroActions">
+ <button class="btn primary" onclick="continueCurrentStory()">▶ Kontynuuj historię</button>
+ <button class="btn" onclick="triggerContextualStoryEvent()">✨ Nowe wydarzenie</button>
+ <button class="btn" onclick="playableClick('family')">❤️ Rodzina</button>
+</div>
  </div>
 </div>
 
@@ -205,6 +403,71 @@ body{
    <button class="pill" onclick="openGoalManager()">🎯 Zarządzaj</button>
  </div>
  <div class="goals"></div>
+</div>
+
+
+<div class="card" style="margin-top:14px">
+ <div class="head">
+  <div><div class="kicker">TWOJE KORZENIE</div><h2>Rodzina i pochodzenie</h2></div>
+  <div class="pill">LOSOWE ŻYCIE</div>
+ </div>
+ <div class="story-line">Każda nowa rozgrywka może rozpocząć się z inną historią rodziny. Majątek, zawody rodziców, pochodzenie, kontakty i mroczne sekrety wpływają na Twoje możliwości oraz późniejsze wydarzenia.</div>
+ <button class="btn primary" onclick="familyOriginScreen()">👨‍👩‍👧 Poznaj historię swojej rodziny</button>
+</div>
+
+<div class="cockpit-grid">
+ <div class="card gold">
+  <div class="head">
+   <div><div class="kicker">ŻYCIE W HOGWARCIE</div><h2>Co dzieje się teraz</h2></div>
+   <div class="pill">ROK <span id="cockpitYear">1</span></div>
+  </div>
+  <div class="today-list">
+   <div class="today-item"><b>📅 DZISIAJ</b><small id="cockpitDate">1 września</small></div>
+   <div class="today-item"><b>🕰️ CZAS</b><small id="cockpitTime">08:00</small></div>
+   <div class="today-item"><b>📚 NAJBLIŻSZA LEKCJA</b><small>Obrona przed Czarną Magią</small></div>
+   <div class="today-item"><b>🧹 NAJBLIŻSZA AKTYWNOŚĆ</b><small>Możliwość treningu latania</small></div>
+   <div class="today-item"><b>❤️ RELACJA DNIA</b><small>Ktoś chce z Tobą porozmawiać</small></div>
+   <div class="today-item"><b>✨ WĄTEK FABULARNY</b><small id="cockpitThread">Historia dopiero się rozpoczyna</small></div>
+  </div>
+  <div class="actions" style="margin-top:10px">
+   <button class="btn primary" onclick="triggerContextualStoryEvent()">✨ Sprawdź wydarzenia</button>
+   <button class="btn" onclick="nextAction()">▶ Kontynuuj dzień</button>
+  </div>
+ </div>
+
+ <div class="card">
+  <div class="head">
+   <div><div class="kicker">STAN POSTACI</div><h2>Twój rozwój</h2></div>
+   <div class="pill">NA ŻYWO</div>
+  </div>
+  <div class="progress-row"><div class="progress-label"><span>🧠 Nauka</span><b id="pAcademic">0%</b></div><div class="progress-track"><i id="bAcademic" style="width:0%"></i></div></div>
+  <div class="progress-row"><div class="progress-label"><span>🧹 Quidditch</span><b id="pQuidditch">0%</b></div><div class="progress-track"><i id="bQuidditch" style="width:0%"></i></div></div>
+  <div class="progress-row"><div class="progress-label"><span>🐉 Stworzenia</span><b id="pCreature">0%</b></div><div class="progress-track"><i id="bCreature" style="width:0%"></i></div></div>
+  <div class="progress-row"><div class="progress-label"><span>🗺️ Eksploracja</span><b id="pExplore">0%</b></div><div class="progress-track"><i id="bExplore" style="width:0%"></i></div></div>
+  <div class="progress-row"><div class="progress-label"><span>🕵️ Tajemnice</span><b id="pMystery">0%</b></div><div class="progress-track"><i id="bMystery" style="width:0%"></i></div></div>
+  <div class="progress-row"><div class="progress-label"><span>🐍 Zainteresowanie Voldemortem</span><b id="pVoldemort">0%</b></div><div class="progress-track"><i id="bVoldemort" style="width:0%"></i></div></div>
+ </div>
+</div>
+
+<div class="card" style="margin-top:14px">
+ <div class="head">
+  <div><div class="kicker">ŚWIAT REAGUJE</div><h2>Ostatnie zmiany</h2></div>
+  <div class="pill">PAMIĘĆ HISTORII</div>
+ </div>
+ <div class="today-list">
+  <div class="today-item"><b>📜 OSTATNIA DECYZJA</b><small id="lastDecision">Brak — historia dopiero się zaczyna.</small></div>
+  <div class="today-item"><b>❤️ NAJWAŻNIEJSZA RELACJA</b><small id="mainRelation">Nie została jeszcze określona.</small></div>
+  <div class="today-item"><b>🎯 CEL ROKU</b><small id="mainGoal">Wybierz cele dla tego roku.</small></div>
+  <div class="today-item"><b>🐍 KIERUNEK FABUŁY</b><small id="mainFaction">Neutralna ścieżka.</small></div>
+ </div>
+</div>
+
+<div class="kpi-strip">
+ <div class="kpi"><span>ZDROWIE</span><b id="kHealth">100</b></div>
+ <div class="kpi"><span>ENERGIA</span><b id="kEnergy">88</b></div>
+ <div class="kpi"><span>SZCZĘŚCIE</span><b id="kHappy">82</b></div>
+ <div class="kpi"><span>REPUTACJA</span><b id="kRep">0</b></div>
+ <div class="kpi"><span>GALEONY</span><b id="kMoney">0</b></div>
 </div>
 
 <div class="card" style="margin-top:14px">
@@ -233,6 +496,17 @@ body{
  </div>
 </div>
 </div><div class="stack">
+<div class="card gold story-status" style="margin-top:14px">
+ <div class="kicker">KIERUNEK HISTORII</div>
+ <h2 id="storyFaction">Neutralna ścieżka</h2>
+ <div class="story-meta">
+  <span class="story-tag">🐍 Voldemort <b id="vInt">0</b></span>
+  <span class="story-tag">🧙 Dumbledore <b id="dTrust">50</b></span>
+  <span class="story-tag">🌑 Czarna Magia <b id="dMagic">0</b></span>
+ </div>
+ <button class="btn" onclick="triggerContextualStoryEvent()">✨ Sprawdź, co wydarzy się dalej</button>
+</div>
+
 <div class="card gold" style="margin-top:14px">
  <div class="kicker">ŻYWE STATYSTYKI</div>
  <h2>Twój dzień</h2>
@@ -765,5 +1039,568 @@ function refreshLiveCockpit(){
 const _refreshGoals=window.renderGoals;
 window.renderGoals=function(){if(_refreshGoals)_refreshGoals();refreshLiveCockpit()};
 document.addEventListener("DOMContentLoaded",()=>setTimeout(refreshLiveCockpit,80));
+</script>
+
+<style>
+/* ===== CONTEXTUAL STORY ENGINE UI ===== */
+.story-meta{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}
+.story-tag{font:7px Inter;color:#aeb5b9;border:1px solid #303a41;background:#0c1217;border-radius:999px;padding:5px 8px}
+.story-tag.gold{color:#e4c87f;border-color:#685631;background:#151109}
+.chain{border-left:2px solid #876b38;padding-left:12px;margin:12px 0}
+.chain b{font-size:9px}.chain small{display:block;color:#747d84;font:7px Inter;line-height:1.5;margin-top:4px}
+.event-impact{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:10px}
+.impact{padding:8px;border:1px solid #2c353c;border-radius:9px;background:#0b1015}
+.impact b{font-size:8px}.impact small{display:block;color:#737c82;font-size:7px;margin-top:3px}
+@media(max-width:650px){.event-impact{grid-template-columns:1fr}}
+</style>
+<script>
+/* =========================================================
+   HOGWARTS LIFE — CONTEXTUAL STORY ENGINE
+   Every decision changes persistent state. Events have
+   requirements, weights, consequences and follow-ups.
+   ========================================================= */
+
+const STORY_DEFAULTS={
+  darkMagic:0, lightMagic:0, voldemortInterest:0, dumbledoreTrust:50,
+  independence:0, courage:0, curiosity:0, ambition:0, empathy:0,
+  loyalty:50, discipline:0, social:0, conflict:0,
+  creatureAffinity:0, quidditchAffinity:0, academicAffinity:0,
+  exploration:0, mystery:0, moneyDiscipline:0,
+  faction:"neutral", fame:0,
+  discovered:[], activeThreads:[], completedThreads:[],
+  eventHistory:[], relationshipFlags:{}, storyFlags:{},
+  year:1, day:1, hour:8
+};
+function ensureStoryState(){
+  G.story={...STORY_DEFAULTS,...(G.story||{})};
+  for(const k of ["discovered","activeThreads","completedThreads","eventHistory"]) if(!Array.isArray(G.story[k]))G.story[k]=[];
+  if(!G.story.relationshipFlags)G.story.relationshipFlags={};
+  if(!G.story.storyFlags)G.story.storyFlags={};
+}
+ensureStoryState();
+
+function sHas(flag){return !!G.story.storyFlags[flag]}
+function sSet(flag,val=true){G.story.storyFlags[flag]=val}
+function sAdd(stat,n){G.story[stat]=Math.max(0,Math.min(100,(G.story[stat]||0)+n))}
+function relation(n,nv){
+  G.relations[n]=(G.relations[n]||60)+nv;
+  G.relations[n]=Math.max(0,Math.min(100,G.relations[n]));
+}
+function storyLog(id,choice,result){
+  G.story.eventHistory.push({id,choice,result,year:G.year,day:G.day,time:Date.now()});
+  if(G.story.eventHistory.length>150)G.story.eventHistory.shift();
+}
+function hasItem(name){return (G.inventory||[]).some(x=>x.toLowerCase().includes(name.toLowerCase()))}
+function hasEvent(id){return G.story.eventHistory.some(e=>e.id===id)}
+function countEvents(){return G.story.eventHistory.length}
+function yearsInStory(){return G.year||1}
+
+const STORY_EVENTS=[
+/* --- early Hogwarts / character shaping --- */
+{id:"owl_attention",icon:"🦉",title:"Sowa, która Cię obserwuje",text:"Jedna z sów zachowuje się inaczej niż pozostałe. Nie odrywa od Ciebie wzroku.",phase:[1,7],weight:7,tags:["creatures","curiosity"],choices:[
+ {text:"Podejdź powoli",desc:"+więź ze stworzeniami",do:()=>{sAdd("creatureAffinity",8);sAdd("empathy",3);sSet("owlBond",true);}},
+ {text:"Zostaw ją w spokoju",desc:"+ostrożność",do:()=>{sAdd("discipline",3);}}
+],next:["owl_bond"]},
+
+{id:"forbidden_book",icon:"📕",title:"Księga z Zakazanego Działu",text:"W bibliotece dostrzegasz księgę, której tytułu nie powinno tu być. Ktoś zostawił ją uchyloną.",phase:[1,7],weight:5,cond:()=>G.story.curiosity>=18||G.story.darkMagic>=12,tags:["dark","mystery"],choices:[
+ {text:"Przeczytaj kilka stron",desc:"+Czarna Magia • ryzyko",do:()=>{sAdd("darkMagic",10);sAdd("curiosity",5);sSet("readForbiddenBook",true);}},
+ {text:"Zgłoś ją nauczycielowi",desc:"+zaufanie dorosłych",do:()=>{sAdd("lightMagic",5);G.story.dumbledoreTrust+=5;sSet("reportedForbiddenBook",true);}}
+],next:["dumbledore_attention","dark_magic_trace"]},
+
+{id:"secret_corridor",icon:"🗝️",title:"Tajne przejście",text:"Za gobelinem odkrywasz fragment starego korytarza. Nigdzie nie ma go na mapie.",phase:[1,7],weight:6,cond:()=>G.story.exploration>=10||G.story.curiosity>=20,tags:["exploration","mystery"],choices:[
+ {text:"Wejdź do środka",desc:"+eksploracja • nowe miejsce",do:()=>{sAdd("exploration",10);sAdd("mystery",8);sSet("secretCorridor",true);}},
+ {text:"Zapamiętaj miejsce i wróć później",desc:"+ostrożność",do:()=>{sAdd("discipline",4);sSet("secretCorridorKnown",true);}}
+],next:["corridor_secret"]},
+
+{id:"dueling_club",icon:"⚔️",title:"Klub pojedynków",text:"Starszy uczeń proponuje Ci pojedynek. Wokół zbiera się coraz więcej osób.",phase:[1,7],weight:7,cond:()=>G.story.courage>=8||G.story.conflict>=5,tags:["duel","social"],choices:[
+ {text:"Przyjmij wyzwanie",desc:"+odwaga • reputacja",do:()=>{sAdd("courage",8);sAdd("fame",4);G.reputation+=2;sSet("duelingClub",true);}},
+ {text:"Odmów, ale zostań obserwować",desc:"+wiedza • spokój",do:()=>{sAdd("academicAffinity",3);sAdd("discipline",3);}}
+],next:["duel_rival"]},
+
+{id:"creature_rescue",icon:"🐉",title:"Ranne stworzenie",text:"Na skraju Zakazanego Lasu znajdujesz magiczne stworzenie, które potrzebuje pomocy.",phase:[2,7],weight:6,cond:()=>G.story.creatureAffinity>=15||sHas("forbiddenForest"),tags:["creatures","moral"],choices:[
+ {text:"Pomóż mu",desc:"+więź ze stworzeniami • empatia",do:()=>{sAdd("creatureAffinity",12);sAdd("empathy",8);sSet("savedCreature",true);}},
+ {text:"Wezwij dorosłego",desc:"+rozsądek",do:()=>{sAdd("discipline",5);sAdd("empathy",3);}}
+],next:["creature_debt"]},
+
+{id:"quidditch_trial",icon:"🧹",title:"Nieoficjalna próba do drużyny",text:"Ktoś z drużyny zauważa Twoje umiejętności latania i proponuje Ci krótką próbę.",phase:[1,7],weight:7,cond:()=>G.story.quidditchAffinity>=10||sHas("flyingPractice"),tags:["quidditch"],choices:[
+ {text:"Spróbuj",desc:"+Quidditch • szansa na drużynę",do:()=>{sAdd("quidditchAffinity",12);sAdd("courage",4);sSet("quidditchTrial",true);}},
+ {text:"Podziękuj, ale odmów",desc:"+niezależność",do:()=>{sAdd("independence",7);sSet("quidditchDeclined",true);}}
+],next:["quidditch_offer"]},
+
+{id:"dumbledore_talk",icon:"🧙",title:"Dumbledore prosi o rozmowę",text:"Dyrektor czeka na Ciebie w gabinecie. Nie mówi, dlaczego Cię wezwał.",phase:[2,7],weight:5,cond:()=>G.story.dumbledoreTrust>=60||G.story.darkMagic>=25||sHas("reportedForbiddenBook"),tags:["dumbledore"],choices:[
+ {text:"Powiedz mu prawdę",desc:"+zaufanie Dumbledore'a",do:()=>{G.story.dumbledoreTrust=Math.min(100,G.story.dumbledoreTrust+10);sAdd("lightMagic",5);sSet("dumbledoreConfides",true);}},
+ {text:"Zachowaj część informacji dla siebie",desc:"+niezależność",do:()=>{sAdd("independence",8);G.story.dumbledoreTrust=Math.max(0,G.story.dumbledoreTrust-3);}}
+],next:["dumbledore_secret"]},
+
+/* --- Voldemort thread --- */
+{id:"dark_symbol",icon:"🐍",title:"Znak na ścianie",text:"Na końcu korytarza widzisz symbol, którego wcześniej nie znałaś/eś. Kiedy podchodzisz bliżej, czujesz dziwny chłód.",phase:[2,7],weight:4,cond:()=>G.story.darkMagic>=20||G.story.mystery>=20||G.story.voldemortInterest>=10,tags:["voldemort","dark"],choices:[
+ {text:"Dotknij symbolu",desc:"+zainteresowanie Voldemorta • ryzyko",do:()=>{G.story.voldemortInterest=Math.min(100,G.story.voldemortInterest+12);sAdd("darkMagic",5);sSet("touchedDarkSymbol",true);}},
+ {text:"Zgłoś to Dumbledore'owi",desc:"+zaufanie • ochrona",do:()=>{G.story.dumbledoreTrust=Math.min(100,G.story.dumbledoreTrust+8);sSet("reportedDarkSymbol",true);}}
+],next:["voldemort_whisper"]},
+
+{id:"voldemort_whisper",icon:"🕯️",title:"Głos w ciemności",text:"Tej nocy słyszysz głos, którego nie potrafisz zidentyfikować. Wypowiada Twoje imię.",phase:[3,7],weight:2,cond:()=>G.story.voldemortInterest>=25||sHas("touchedDarkSymbol"),tags:["voldemort","major"],choices:[
+ {text:"Odpowiedz",desc:"+kontakt • bardzo duża konsekwencja",do:()=>{G.story.voldemortInterest=Math.min(100,G.story.voldemortInterest+18);sAdd("darkMagic",8);sSet("answeredVoldemort",true);}},
+ {text:"Spróbuj zamknąć umysł",desc:"+odporność • Dumbledore może to zauważyć",do:()=>{sAdd("discipline",8);G.story.dumbledoreTrust=Math.min(100,G.story.dumbledoreTrust+4);sSet("resistedVoldemort",true);}}
+],next:["first_contact"]},
+
+{id:"first_contact",icon:"🐍",title:"Pierwszy kontakt",text:"Widzisz go tylko przez chwilę. Nie wygląda tak, jak wyobrażali go sobie inni. Patrzy prosto na Ciebie.",phase:[4,7],weight:1,cond:()=>G.story.voldemortInterest>=45||sHas("answeredVoldemort"),tags:["voldemort","major"],choices:[
+ {text:"Słuchaj jego propozycji",desc:"Odblokowuje ciemną ścieżkę",do:()=>{G.story.voldemortInterest=Math.min(100,G.story.voldemortInterest+15);sSet("heardVoldemortOffer",true);}},
+ {text:"Odmów",desc:"+odwaga • stajesz się celem",do:()=>{sAdd("courage",10);sAdd("lightMagic",6);sSet("refusedVoldemort",true);}},
+ {text:"Spróbuj zadać własne warunki",desc:"+ambicja • niezależność",do:()=>{sAdd("ambition",10);sAdd("independence",8);sSet("negotiatedVoldemort",true);}}
+],next:["voldemort_choice"]},
+
+{id:"voldemort_choice",icon:"⚔️",title:"Wybór strony",text:"Po raz pierwszy rozumiesz, że możesz naprawdę wybrać, komu będziesz służyć — albo czy będziesz służyć komukolwiek.",phase:[5,7],weight:1,cond:()=>sHas("heardVoldemortOffer")||sHas("negotiatedVoldemort"),tags:["faction","major"],choices:[
+ {text:"Stanę po stronie Voldemorta",desc:"Frakcja: Voldemort",do:()=>{G.story.faction="voldemort";G.story.voldemortInterest=100;sAdd("darkMagic",15);sSet("joinedVoldemort",true);}},
+ {text:"Nie będę służyć nikomu",desc:"Frakcja: niezależna",do:()=>{G.story.faction="independent";sAdd("independence",15);sAdd("ambition",8);sSet("independentFaction",true);}},
+ {text:"Stanę przeciwko niemu",desc:"Frakcja: Dumbledore / świat czarodziejów",do:()=>{G.story.faction="dumbledore";sAdd("courage",12);sAdd("lightMagic",10);sSet("joinedResistance",true);}}
+],next:["faction_consequence"]},
+
+{id:"voldemort_serves",icon:"🩸",title:"Rozkaz",text:"Jeżeli wybrałaś/eś jego stronę, nadchodzi pierwszy prawdziwy rozkaz. To nie jest już zabawa.",phase:[5,7],weight:3,cond:()=>G.story.faction==="voldemort",tags:["voldemort","faction"],choices:[
+ {text:"Wykonaj rozkaz",desc:"+zaufanie Voldemorta • mroczna reputacja",do:()=>{G.story.voldemortInterest=100;sAdd("darkMagic",10);sAdd("fame",3);sSet("servedVoldemort",true);}},
+ {text:"Odmów",desc:"Ryzykujesz własną pozycję",do:()=>{sAdd("independence",12);G.story.voldemortInterest=Math.max(0,G.story.voldemortInterest-10);sSet("defiedVoldemort",true);}}
+],next:["dark_faction_split"]},
+
+{id:"dumbledore_resistance",icon:"🛡️",title:"Sekretne zadanie Dumbledore'a",text:"Dumbledore prosi Cię o coś, czego nie może powierzyć dorosłym.",phase:[4,7],weight:3,cond:()=>G.story.faction==="dumbledore"||G.story.dumbledoreTrust>=75,tags:["dumbledore","resistance"],choices:[
+ {text:"Przyjmij",desc:"+zaufanie • wejście w konflikt",do:()=>{G.story.dumbledoreTrust=Math.min(100,G.story.dumbledoreTrust+10);sSet("dumbledoreAgent",true);}},
+ {text:"Odmów",desc:"+niezależność • nie chcesz być pionkiem",do:()=>{sAdd("independence",12);sSet("refusedDumbledoreMission",true);}}
+],next:["resistance_consequence"]},
+
+{id:"independent_faction",icon:"🌓",title:"Własna droga",text:"Nie należysz do żadnej strony. To daje wolność, ale oznacza też, że nie masz za sobą potężnego sojusznika.",phase:[4,7],weight:3,cond:()=>G.story.faction==="independent"||G.story.independence>=60,tags:["independent"],choices:[
+ {text:"Zbuduj własną grupę",desc:"+sojusznicy • własna frakcja",do:()=>{sAdd("social",12);sAdd("ambition",10);sSet("ownFaction",true);}},
+ {text:"Pozostań samotna/y",desc:"+niezależność • mniej ochrony",do:()=>{sAdd("independence",10);sSet("lonePath",true);}}
+],next:["independent_consequence"]},
+
+/* --- magical creatures / Fantastic Beasts layer --- */
+{id:"newt_encounter",icon:"🧳",title:"Nieoczekiwane spotkanie z badaczem stworzeń",text:"W miejscu, którego nie spodziewasz się zobaczyć, zauważasz czarodzieja zajętego ratowaniem niezwykłego stworzenia.",phase:[3,7],weight:2,cond:()=>G.story.creatureAffinity>=35||G.story.exploration>=35,tags:["creatures","fantastic"],choices:[
+ {text:"Pomóż",desc:"+wiedza o stworzeniach • wyjątkowa relacja",do:()=>{sAdd("creatureAffinity",12);sAdd("empathy",8);sSet("metCreatureResearcher",true);}},
+ {text:"Obserwuj i ucz się",desc:"+wiedza",do:()=>{sAdd("academicAffinity",8);sAdd("creatureAffinity",5);}}
+],next:["creature_research"]},
+
+{id:"thestral_truth",icon:"🐎",title:"Stworzenie, którego inni nie widzą",text:"Podczas spaceru zauważasz istotę, której większość uczniów zdaje się nie dostrzegać.",phase:[3,7],weight:3,cond:()=>G.story.empathy>=25||G.story.creatureAffinity>=25,tags:["creatures","mystery"],choices:[
+ {text:"Podejdź spokojnie",desc:"+więź • tajemnica",do:()=>{sAdd("creatureAffinity",10);sAdd("mystery",8);sSet("seesThestral",true);}},
+ {text:"Nie przeszkadzaj",desc:"+szacunek",do:()=>{sAdd("empathy",5);}}
+],next:["thestral_secret"]}
+];
+
+function storyEligible(e){
+  if(e.phase && (G.year<e.phase[0]||G.year>e.phase[1]))return false;
+  if(e.cond && !e.cond())return false;
+  if(e.once && hasEvent(e.id))return false;
+  return true;
+}
+function storyScore(e){
+  let w=e.weight||1;
+  if(e.tags?.includes("voldemort"))w+=G.story.voldemortInterest/18;
+  if(e.tags?.includes("dark"))w+=G.story.darkMagic/20;
+  if(e.tags?.includes("dumbledore"))w+=G.story.dumbledoreTrust/25;
+  if(e.tags?.includes("creatures"))w+=G.story.creatureAffinity/20;
+  if(e.tags?.includes("quidditch"))w+=G.story.quidditchAffinity/20;
+  if(e.tags?.includes("social"))w+=G.story.social/20;
+  if(e.tags?.includes("mystery"))w+=G.story.mystery/20;
+  if(G.yearGoals?.some(g=>g.id==="curious") && e.tags?.includes("mystery"))w*=1.65;
+  if(G.yearGoals?.some(g=>g.id==="owl") && e.tags?.includes("creatures"))w*=1.65;
+  if(G.yearGoals?.some(g=>g.id==="brave") && e.tags?.includes("duel"))w*=1.5;
+  if(G.yearGoals?.some(g=>g.id==="friends") && e.tags?.includes("social"))w*=1.5;
+  if(G.yearGoals?.some(g=>g.id==="quidditch") && e.tags?.includes("quidditch"))w*=1.7;
+  return w;
+}
+function chooseStoryEvent(){
+  ensureStoryState();
+  const candidates=STORY_EVENTS.filter(storyEligible);
+  if(!candidates.length)return null;
+  const weighted=[];
+  candidates.forEach(e=>{let n=Math.max(1,Math.round(storyScore(e)*10));for(let i=0;i<n;i++)weighted.push(e)});
+  return weighted[Math.floor(Math.random()*weighted.length)];
+}
+function openStoryEvent(e){
+  if(!e)return;
+  const prior=e.next?.filter(id=>hasEvent(id)).length||0;
+  document.getElementById("gamePanel").innerHTML=`<button class="game-close" onclick="closeGame()">×</button>
+  <div class="game-head"><div class="scene-symbol">${e.icon}</div><div><h2>${e.title}</h2><small>Wydarzenie kontekstowe • rok ${G.year}</small></div></div>
+  <div class="game-body">
+   <div class="scene-large">${e.icon}</div>
+   <div class="story-line">${e.text}</div>
+   <div class="story-meta">
+    ${(e.tags||[]).map(t=>`<span class="story-tag">${t}</span>`).join("")}
+    <span class="story-tag gold">historia reaguje na Twoje decyzje</span>
+   </div>
+   <div class="choice-grid">${e.choices.map((c,i)=>`<button class="game-choice" onclick="resolveStoryEvent('${e.id}',${i})"><b>${c.text}</b><small>${c.desc}</small></button>`).join("")}</div>
+  </div>`;
+  openGame();
+}
+function resolveStoryEvent(id,i){
+  const e=STORY_EVENTS.find(x=>x.id===id);if(!e)return;
+  const c=e.choices[i]; if(!c)return;
+  if(c.do)c.do();
+  storyLog(id,c.text,"decision");
+  saveGame();
+  renderStoryConsequence(e,c);
+}
+function renderStoryConsequence(e,c){
+  const factionText=G.story.faction==="voldemort"?"🐍 Twoja ścieżka zaczyna coraz wyraźniej prowadzić ku Voldemortowi.":G.story.faction==="dumbledore"?"🛡️ Zaczynasz być postrzegana/y jako sojusznik Dumbledore'a.":G.story.faction==="independent"?"🌓 Coraz bardziej tworzysz własną drogę.":"✨ Twoja historia zaczyna się kształtować.";
+  document.getElementById("gamePanel").innerHTML=`<button class="game-close" onclick="closeGame()">×</button>
+  <div class="game-head"><div class="scene-symbol">✨</div><div><h2>Konsekwencja decyzji</h2><small>To wydarzenie pozostanie w pamięci gry</small></div></div>
+  <div class="game-body">
+   <div class="scene-large">✨</div>
+   <div class="story-line"><b>${c.text}</b><br><br>${factionText}<br><br>Ta decyzja może zmienić przyszłe wydarzenia, relacje i możliwości.</div>
+   <div class="event-impact">
+    <div class="impact"><b>📜 Historia</b><small>Decyzja została zapisana.</small></div>
+    <div class="impact"><b>🧠 Silnik historii</b><small>Przyszłe wydarzenia zostaną przeliczone.</small></div>
+   </div>
+   <button class="btn primary" onclick="continueStoryAfterEvent('${e.id}')">▶ Kontynuuj historię</button>
+  </div>`;
+}
+function continueStoryAfterEvent(id){
+  closeGame();
+  setTimeout(()=>{
+    const followId=STORY_EVENTS.find(e=>e.id===id)?.next?.find(n=>STORY_EVENTS.some(x=>x.id===n && storyEligible(x)));
+    if(followId){
+      const e=STORY_EVENTS.find(x=>x.id===followId);openStoryEvent(e);
+    }else{
+      const next=chooseStoryEvent();
+      if(next)openStoryEvent(next);
+      else toast2("📜 Twoja historia została zapisana.");
+    }
+  },120);
+}
+function triggerContextualStoryEvent(){
+  const e=chooseStoryEvent();
+  if(e)openStoryEvent(e);else toast2("✨ Na razie nic nowego nie wydarzyło się w Twojej historii.");
+}
+const oldRandom=window.triggerRandomContextEvent;
+window.triggerRandomContextEvent=function(){
+  triggerContextualStoryEvent();
+};
+const oldNext=window.nextAction;
+window.nextAction=function(){
+  ensureStoryState();
+  if(G.flags?.arrived && Math.random()<0.55){
+    const e=chooseStoryEvent(); if(e){openStoryEvent(e);return;}
+  }
+  if(oldNext)oldNext();
+};
+const oldChoose=window.sortAnswer;
+window.sortAnswer=function(i){
+  if(oldChoose)oldChoose(i);
+  // The sorting answers also seed the character profile.
+  if(i===0)sAdd("courage",2);
+  if(i===1)sAdd("academicAffinity",2);
+  if(i===2)sAdd("ambition",2);
+  if(i===3){sAdd("loyalty",2);sAdd("empathy",2);}
+  saveGame();
+};
+const oldStartSort=window.startSortingPlayable;
+window.startSortingPlayable=function(){ensureStoryState();if(oldStartSort)oldStartSort()};
+const oldSaveForStory=window.saveGame;
+window.saveGame=function(){ensureStoryState();if(oldSaveForStory)oldSaveForStory()};
+</script>
+
+<script>
+function refreshStoryStatus(){
+ ensureStoryState();
+ const f=G.story.faction;
+ const names={neutral:"Neutralna ścieżka",voldemort:"🐍 Strona Voldemorta",dumbledore:"🛡️ Sojusz Dumbledore'a",independent:"🌓 Własna droga"};
+ const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};
+ set("storyFaction",names[f]||names.neutral);
+ set("vInt",G.story.voldemortInterest||0);
+ set("dTrust",G.story.dumbledoreTrust||0);
+ set("dMagic",G.story.darkMagic||0);
+}
+const _rsc=window.refreshLiveCockpit;
+window.refreshLiveCockpit=function(){if(_rsc)_rsc();refreshStoryStatus()};
+document.addEventListener("DOMContentLoaded",()=>setTimeout(refreshStoryStatus,100));
+</script>
+
+<style>
+.family-origin{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}
+.origin-card{padding:10px;border:1px solid #2d373f;border-radius:11px;background:linear-gradient(145deg,#0d1318,#090d11)}
+.origin-card b{font-size:8px}.origin-card small{display:block;color:#778087;font-size:7px;line-height:1.45;margin-top:4px}
+.origin-tag{display:inline-block;margin:3px 3px 0 0;padding:4px 7px;border-radius:99px;border:1px solid #3b4248;background:#11171c;color:#aeb5ba;font-size:6px}
+@media(max-width:650px){.family-origin{grid-template-columns:1fr}}
+</style>
+<script>
+/* ===== FAMILY, ORIGIN & SOCIAL BACKGROUND ENGINE ===== */
+const FAMILY_PROFILES=[
+ {id:"pure_old",label:"Stara rodzina czarodziejów",blood:"Czysta krew",wealth:85,status:72,dark:25,
+  father:["Auror","uzdrowiciel","urzędnik Ministerstwa","właściciel sklepu magicznego","historyk magii"],
+  mother:["uzdrowicielka","profesorka","właścicielka pracowni eliksirów","badaczka magicznych stworzeń","urzędniczka Ministerstwa"],
+  legacy:"Rodzina ma długą historię w świecie czarodziejów.",tags:["tradycja","wpływy","majątek"]},
+ {id:"mixed_magic",label:"Rodzina mieszana",blood:"Pochodzenie mieszane",wealth:55,status:52,dark:8,
+  father:["nauczyciel","uzdrowiciel","auror","rzemieślnik","pracownik Ministerstwa"],
+  mother:["bibliotekarka","uzdrowicielka","nauczycielka","badaczka","właścicielka małego biznesu"],
+  legacy:"W rodzinie od pokoleń spotykają się świat mugolski i magiczny.",tags:["różne światy","elastyczność"]},
+ {id:"muggle_born_parent",label:"Rodzina z silnymi korzeniami mugolskimi",blood:"Mugolskie korzenie",wealth:45,status:35,dark:2,
+  father:["nauczyciel mugolskiej szkoły","lekarz","inżynier","prawnik","właściciel firmy"],
+  mother:["lekarka","nauczycielka","księgowa","dziennikarka","artystka"],
+  legacy:"Rodzina zna świat mugoli bardzo dobrze, ale część jej historii jest związana z magią.",tags:["mugolski świat","adaptacja"]},
+ {id:"working_magic",label:"Rodzina czarodziejów pracująca na co dzień",blood:"Czysta lub mieszana",wealth:28,status:30,dark:5,
+  father:["rzemieślnik","pracownik sklepu","gajowy","pracownik Ministerstwa","woźny Hogwartu"],
+  mother:["pracownica sklepu","uzdrowicielka","rzemieślniczka","gospodyni","pracownica Ministerstwa"],
+  legacy:"Nie macie wielkiego majątku, ale rodzina jest bardzo zżyta.",tags:["pracowitość","rodzina"]},
+ {id:"wealthy_business",label:"Bogata rodzina biznesowa",blood:"Mieszane lub czystokrwiste",wealth:95,status:70,dark:18,
+  father:["właściciel sieci sklepów","inwestor","bankier","przedsiębiorca magiczny","właściciel przedsiębiorstwa"],
+  mother:["właścicielka firmy","kolekcjonerka","prawniczka","inwestorka","właścicielka galerii"],
+  legacy:"Rodzina ma pieniądze, kontakty i wpływy.",tags:["pieniądze","kontakty","presja"]},
+ {id:"dark_legacy",label:"Rodzina z mroczną przeszłością",blood:"Czysta lub mieszana",wealth:65,status:42,dark:78,
+  father:["były zwolennik Czarnej Magii","badacz zakazanych artefaktów","uzdrowiciel","arystokrata","pracownik Ministerstwa"],
+  mother:["badaczka Czarnej Magii","uzdrowicielka","historyczka","arystokratka","właścicielka antykwariatu"],
+  legacy:"W rodzinnych archiwach znajdują się rzeczy, o których nikt nie chce mówić.",tags:["sekrety","Czarna Magia","ryzyko"]},
+ {id:"fallen_wealth",label:"Dawniej bogata rodzina",blood:"Czysta lub mieszana",wealth:22,status:55,dark:35,
+  father:["były właściciel majątku","urzędnik","historyk","rzemieślnik","uzdrowiciel"],
+  mother:["nauczycielka","badaczka","właścicielka małej firmy","uzdrowicielka","historyczka"],
+  legacy:"Rodzina kiedyś była bardzo zamożna, ale straciła większość majątku.",tags:["upadek","długi","ambicja"]},
+ {id:"creature_family",label:"Rodzina związana z magicznymi stworzeniami",blood:"Mieszane",wealth:48,status:48,dark:4,
+  father:["magizoolog","gajowy","badacz stworzeń","uzdrowiciel","pracownik rezerwatu"],
+  mother:["magizoolożka","weterynarka magiczna","badaczka","nauczycielka","pracownica rezerwatu"],
+  legacy:"Od dziecka znasz niezwykłe stworzenia i ich zachowania.",tags:["stworzenia","natura","badania"]},
+ {id:"ministry_family",label:"Rodzina związana z Ministerstwem",blood:"Mieszane lub czystokrwiste",wealth:62,status:82,dark:12,
+  father:["wysoki urzędnik Ministerstwa","auror","prawnik Ministerstwa","pracownik Departamentu Tajemnic","dyplomata"],
+  mother:["urzędniczka Ministerstwa","aurorka","prawniczka","dyplomatka","badaczka"],
+  legacy:"W rodzinie znane są nazwiska, stanowiska i zasady świata czarodziejów.",tags:["wpływy","prawo","polityka"]}
+];
+
+const FAMILY_TRAITS=[
+ ["supportive","❤️ Bardzo wspierająca rodzina","Rodzice mocno wspierają Twoje decyzje."],
+ ["strict","📏 Surowe wychowanie","W domu obowiązują wysokie wymagania."],
+ ["ambitious","⭐ Ambitni rodzice","Rodzina oczekuje od Ciebie sukcesu."],
+ ["secretive","🔒 Rodzinne sekrety","Nie wszystko, co dotyczy rodziny, jest Ci znane."],
+ ["protective","🛡️ Nadopiekuńcza rodzina","Bliscy bardzo martwią się o Twoje bezpieczeństwo."],
+ ["independent","🧭 Dużo swobody","Od małego uczysz się podejmować własne decyzje."],
+ ["financial_pressure","🪙 Problemy finansowe","Pieniądze są w domu częstym tematem."],
+ ["dark_pressure","🐍 Mroczna presja","Część rodziny ma związki z Czarną Magią."],
+ ["muggle_connection","🏠 Silne związki ze światem mugoli","Rodzina dobrze zna oba światy."],
+ ["famous","🌟 Znane nazwisko","Twoje nazwisko może otwierać drzwi — albo powodować problemy."]
+];
+
+function randomOf(a){return a[Math.floor(Math.random()*a.length)]}
+function generateFamilyOrigin(){
+ const profile=randomOf(FAMILY_PROFILES);
+ const traitPool=[...FAMILY_TRAITS].sort(()=>Math.random()-.5);
+ const traits=traitPool.slice(0,Math.random()<.45?3:2);
+ const wealthBase=profile.wealth+Math.floor(Math.random()*21)-10;
+ const family={
+   profileId:profile.id,label:profile.label,blood:profile.blood,
+   wealth:Math.max(5,Math.min(100,wealthBase)),
+   socialStatus:profile.status+Math.floor(Math.random()*15)-7,
+   darkHistory:Math.max(0,Math.min(100,profile.dark+Math.floor(Math.random()*18)-9)),
+   father:{profession:randomOf(profile.father),age:Math.floor(42+Math.random()*16)},
+   mother:{profession:randomOf(profile.mother),age:Math.floor(40+Math.random()*16)},
+   legacy:profile.legacy,traits:traits.map(x=>x[0]),
+   description:traits.map(x=>x[2]).join(" "),
+   debts:0,savings:0,business:null,connections:[],
+   familyRelationship:65+Math.floor(Math.random()*26)
+ };
+ if(family.wealth<30)family.debts=Math.floor(Math.random()*18);
+ if(family.wealth>75)family.savings=30+Math.floor(Math.random()*70);
+ if(Math.random()<.25)family.business=randomOf(["mały sklep magiczny","pracownia eliksirów","rodzinny antykwariat","firma transportowa","gospodarstwo magiczne"]);
+ family.connections=profile.tags||[];
+ return family;
+}
+function ensureFamilyOrigin(){
+ ensureStoryState();
+ if(!G.familyOrigin)G.familyOrigin=generateFamilyOrigin();
+ // Derive story variables from family background only once.
+ if(!G.story.familySeeded){
+   const f=G.familyOrigin;
+   if(f.darkHistory>=45)G.story.darkMagic=Math.min(100,G.story.darkMagic+Math.floor(f.darkHistory/8));
+   if(f.wealth>=70)G.story.fame+=4;
+   if(f.socialStatus>=70)G.story.social+=5;
+   if(f.traits.includes("supportive"))G.relations.family=Math.min(100,(G.relations.family||60)+10);
+   if(f.traits.includes("strict"))G.story.discipline+=7;
+   if(f.traits.includes("ambitious"))G.story.ambition+=8;
+   if(f.traits.includes("muggle_connection"))G.story.independence+=4;
+   if(f.traits.includes("secretive"))G.story.mystery+=7;
+   if(f.traits.includes("creature_family"))G.story.creatureAffinity+=8;
+   G.story.familySeeded=true;
+   saveGame();
+ }
+}
+ensureFamilyOrigin();
+
+function familyOriginScreen(){
+ ensureFamilyOrigin();
+ const f=G.familyOrigin;
+ const dark=f.darkHistory>=60?"Wysokie":"Umiarkowane";
+ const wealth=f.wealth>=75?"Bardzo zamożna":f.wealth>=50?"Stabilna":"Skromna";
+ document.getElementById("gamePanel").innerHTML=`<button class="game-close" onclick="closeGame()">×</button>
+ <div class="game-head"><div class="scene-symbol">👨‍👩‍👧</div><div><h2>Rodzina i pochodzenie</h2><small>Historia Twojego życia przed Hogwartem</small></div></div>
+ <div class="game-body">
+  <div class="scene-large">🏠</div>
+  <div class="story-line">${f.legacy}<br><br>${f.description}</div>
+  <div class="family-origin">
+   <div class="origin-card"><b>🩸 Pochodzenie</b><small>${f.blood}</small></div>
+   <div class="origin-card"><b>🪙 Majątek</b><small>${wealth} • poziom ${f.wealth}/100</small></div>
+   <div class="origin-card"><b>👨 Ojciec</b><small>${f.father.profession}</small></div>
+   <div class="origin-card"><b>👩 Matka</b><small>${f.mother.profession}</small></div>
+   <div class="origin-card"><b>🏛️ Status rodziny</b><small>${f.socialStatus}/100</small></div>
+   <div class="origin-card"><b>🐍 Mroczna przeszłość</b><small>${dark} • ${f.darkHistory}/100</small></div>
+  </div>
+  <div class="story-meta">${f.traits.map(t=>{let x=FAMILY_TRAITS.find(y=>y[0]===t);return `<span class="origin-tag">${x?x[1]:t}</span>`}).join("")}</div>
+  <button class="btn primary" onclick="closeGame()">Wróć do gry</button>
+ </div>`;
+ openGame();
+}
+function rerollFamilyOrigin(){
+ if(G.year>1 || G.story.eventHistory?.length>0){
+   toast2("🏠 Pochodzenie jest częścią rozpoczętego życia i nie można go teraz zmienić.");
+   return;
+ }
+ G.familyOrigin=generateFamilyOrigin();
+ G.story.familySeeded=false;
+ ensureFamilyOrigin();
+ saveGame();
+ familyOriginScreen();
+ toast2("🎲 Wygenerowano nowe pochodzenie rodziny.");
+}
+
+/* Family-aware contextual events */
+STORY_EVENTS.push(
+ {id:"family_legacy",icon:"📜",title:"Rodzinne archiwum",text:"W domu znajdujesz stary dokument, który pokazuje, że historia Twojej rodziny jest bardziej skomplikowana, niż sądziłaś/eś.",phase:[1,7],weight:4,
+  cond:()=>G.familyOrigin?.darkHistory>=35||G.familyOrigin?.socialStatus>=65||G.familyOrigin?.traits?.includes("secretive"),
+  tags:["family","mystery"],choices:[
+   {text:"Przeczytaj wszystko",desc:"+tajemnica • poznajesz rodzinę",do:()=>{sAdd("mystery",10);sAdd("curiosity",7);sSet("familyArchiveRead",true)}},
+   {text:"Odłóż dokument",desc:"+ostrożność",do:()=>{sAdd("discipline",4)}}
+  ],next:["family_secret"]},
+ {id:"family_finances",icon:"🪙",title:"Rozmowa o pieniądzach",text:"W domu pojawia się temat pieniędzy. Twoja sytuacja rodzinna zaczyna wpływać na Twoje plany.",phase:[1,7],weight:5,
+  cond:()=>G.familyOrigin && (G.familyOrigin.wealth<35||G.familyOrigin.wealth>75||G.familyOrigin.debts>0),
+  tags:["family","money"],choices:[
+   {text:"Zapytaj, jak możesz pomóc",desc:"+odpowiedzialność • relacja",do:()=>{sAdd("empathy",6);sAdd("moneyDiscipline",8);relation("family",5)}},
+   {text:"Nie chcę się tym przejmować",desc:"+niezależność • dystans",do:()=>{sAdd("independence",6);relation("family",-2)}}
+  ],next:["family_money_future"]},
+ {id:"dark_family_reveal",icon:"🐍",title:"Sekret rodziny",text:"Dowiadujesz się, że ktoś z Twojej rodziny miał kiedyś kontakt z ludźmi zajmującymi się Czarną Magią.",phase:[2,7],weight:2,
+  cond:()=>G.familyOrigin?.darkHistory>=60||G.familyOrigin?.traits?.includes("dark_pressure"),
+  tags:["family","dark","mystery"],choices:[
+   {text:"Chcę poznać całą prawdę",desc:"+Czarna Magia • tajemnica",do:()=>{sAdd("darkMagic",8);sAdd("mystery",12);sSet("familyDarkSecret",true)}},
+   {text:"Nie chcę mieć z tym nic wspólnego",desc:"+odrzucenie przeszłości",do:()=>{sAdd("lightMagic",6);sAdd("independence",5);sSet("rejectedFamilyDarkPast",true)}}
+  ],next:["family_dark_consequence"]},
+ {id:"family_influence",icon:"🏛️",title:"Nazwisko ma znaczenie",text:"Ktoś rozpoznaje Twoje nazwisko i zachowuje się wobec Ciebie inaczej.",phase:[1,7],weight:4,
+  cond:()=>G.familyOrigin?.socialStatus>=70,
+  tags:["family","social"],choices:[
+   {text:"Wykorzystaj znajomości",desc:"+wpływy • reputacja",do:()=>{sAdd("social",8);sAdd("fame",4)}},
+   {text:"Udowodnij, że poradzisz sobie sam/a",desc:"+niezależność",do:()=>{sAdd("independence",8)}}
+  ],next:["family_reputation"]}
+);
+
+/* Hook family state into story scoring. */
+const _storyScoreFamily=window.storyScore;
+window.storyScore=function(e){
+ let w=_storyScoreFamily? _storyScoreFamily(e):1;
+ if(e.tags?.includes("family") && G.familyOrigin){
+   if(G.familyOrigin.darkHistory>=60)w*=1.4;
+   if(G.familyOrigin.wealth<35 && e.tags?.includes("money"))w*=1.6;
+   if(G.familyOrigin.wealth>75 && e.tags?.includes("money"))w*=1.3;
+   if(G.familyOrigin.socialStatus>=70 && e.tags?.includes("social"))w*=1.4;
+ }
+ return w;
+};
+
+/* Replace family button behavior with the family hub. */
+const _playableClickFamily=window.playableClick;
+window.playableClick=function(key){
+ if(key==="family"){familyOriginScreen();return;}
+ if(_playableClickFamily)_playableClickFamily(key);
+};
+
+/* Make the family origin visible from the character/profile area too. */
+function openFamilyOrigin(){familyOriginScreen()}
+
+const _refreshStoryStatusFamily=window.refreshStoryStatus;
+window.refreshStoryStatus=function(){if(_refreshStoryStatusFamily)_refreshStoryStatusFamily();ensureFamilyOrigin()};
+
+document.addEventListener("DOMContentLoaded",()=>setTimeout(ensureFamilyOrigin,120));
+</script>
+
+<script>
+function refreshExpandedCockpit(){
+ ensureStoryState(); ensureFamilyOrigin();
+ const st=G.story, f=G.familyOrigin||{};
+ const pct=(v)=>Math.max(0,Math.min(100,Math.round(v||0)));
+ const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};
+ const bar=(id,v)=>{const e=document.getElementById(id);if(e)e.style.width=pct(v)+"%"};
+ set("cockpitYear",G.year||1);
+ set("cockpitDate",`${G.day||1} dzień roku szkolnego`);
+ set("cockpitTime",`${String(G.hour||8).padStart(2,"0")}:00`);
+ set("cockpitThread", st.voldemortInterest>=45?"Ktoś zaczął zwracać na Ciebie uwagę.":st.mystery>=25?"W Hogwarcie czeka na Ciebie tajemnica.":"Historia dopiero nabiera kształtu.");
+ const vals=[
+  ["Academic",st.academicAffinity],["Quidditch",st.quidditchAffinity],["Creature",st.creatureAffinity],
+  ["Explore",st.exploration],["Mystery",st.mystery],["Voldemort",st.voldemortInterest]
+ ];
+ vals.forEach(([n,v])=>{set("p"+n,pct(v)+"%");bar("b"+n,v)});
+ set("kHealth",G.health||100);set("kEnergy",G.energy||0);set("kHappy",G.happy||0);set("kRep",G.reputation||0);
+ set("kMoney",G.galleons||0);
+ const last=(st.eventHistory||[]).slice(-1)[0];
+ if(last)set("lastDecision",`${last.choice} • rok ${last.year}`);
+ const names={voldemort:"🐍 Strona Voldemorta",dumbledore:"🛡️ Sojusz Dumbledore'a",independent:"🌓 Własna droga",neutral:"✨ Neutralna ścieżka"};
+ set("mainFaction",names[st.faction]||names.neutral);
+ if(G.yearGoals?.length)set("mainGoal",G.yearGoals[0].title||"Aktywny cel roku");
+}
+const _live2=window.refreshLiveCockpit;
+window.refreshLiveCockpit=function(){if(_live2)_live2();refreshExpandedCockpit()};
+document.addEventListener("DOMContentLoaded",()=>setTimeout(refreshExpandedCockpit,180));
+</script>
+
+<script>
+/* V9 — persistent story state in the main cockpit */
+(function(){
+function ensure(){if(typeof ensureStoryState==="function")ensureStoryState();}
+function last(){ensure();return (G.story.eventHistory||[]).slice(-1)[0]||null;}
+function ev(id){return (typeof STORY_EVENTS!=="undefined")?STORY_EVENTS.find(x=>x.id===id):null;}
+function follow(e){
+ if(!e||!e.next)return null;
+ for(const id of e.next){const x=ev(id);if(x&&(!x.phase||(G.year>=x.phase[0]&&G.year<=x.phase[1]))&&(!x.cond||x.cond()))return x;}
+ return null;
+}
+window.refreshHeroStory=function(){
+ ensure();
+ const l=last(), e=l?ev(l.id):null;
+ let title="✉️ List z Hogwartu", text="Jeszcze dziś rano wszystko było zwyczajne. Teraz na stole leży koperta z herbem Hogwartu.";
+ if(l){
+   if(G.story.faction==="voldemort"){title="🐍 Twoja ścieżka: Voldemort";text="Twoje decyzje coraz mocniej wiążą Cię ze stroną Voldemorta. Świat zaczyna na nie reagować.";}
+   else if(G.story.faction==="dumbledore"){title="🛡️ W centrum konfliktu";text="Dumbledore coraz bardziej ufa Ci w sprawach, o których większość uczniów nic nie wie.";}
+   else if(G.story.faction==="independent"){title="🌓 Własna droga";text="Nie należysz do żadnej strony. Kolejne decyzje budują Twoją własną historię.";}
+   else if(e){title=(e.icon||"📜")+" "+e.title;text="Twoja ostatnia decyzja została zapamiętana. Jej konsekwencje mogą pojawić się później.";}
+ }
+ const a=document.getElementById("heroStoryTitle"),b=document.getElementById("heroStoryText"),d=document.getElementById("heroLastDecision"),f=document.getElementById("heroFaction");
+ if(a)a.textContent=title;if(b)b.textContent=text;
+ if(d)d.textContent=l?"↳ "+l.choice:"Brak decyzji";
+ const names={neutral:"✨ Neutralna ścieżka",voldemort:"🐍 Strona Voldemorta",dumbledore:"🛡️ Sojusz Dumbledore'a",independent:"🌓 Własna droga"};
+ if(f)f.textContent=names[G.story.faction]||names.neutral;
+};
+window.openStoryEvent=function(e){
+ if(!e)return;window._currentStoryEvent=e.id;
+ document.getElementById("gamePanel").innerHTML=`<button class="game-close" onclick="closeGame()">×</button>
+ <div class="game-head"><div class="scene-symbol">${e.icon}</div><div><h2>${e.title}</h2><small>Wydarzenie kontekstowe • rok ${G.year}</small></div></div>
+ <div class="game-body"><div class="scene-large">${e.icon}</div><div class="story-line">${e.text}</div>
+ <div class="story-meta">${(e.tags||[]).map(t=>`<span class="story-tag">${t}</span>`).join("")}<span class="story-tag gold">historia reaguje na Twoje decyzje</span></div>
+ <div class="choice-grid">${e.choices.map((c,i)=>`<button class="game-choice" onclick="resolveStoryEvent('${e.id}',${i})"><b>${c.text}</b><small>${c.desc}</small></button>`).join("")}</div></div>`;
+ openGame();
+};
+window.resolveStoryEvent=function(id,i){
+ const e=ev(id),c=e&&e.choices[i];if(!c)return;
+ if(c.do)c.do();storyLog(id,c.text,"decision");saveGame();
+ refreshHeroStory();
+ if(typeof refreshExpandedCockpit==="function")refreshExpandedCockpit();
+ if(typeof refreshLiveCockpit==="function")refreshLiveCockpit();
+ const nx=follow(e);
+ document.getElementById("gamePanel").innerHTML=`<button class="game-close" onclick="closeGame()">×</button>
+ <div class="game-head"><div class="scene-symbol">✨</div><div><h2>Konsekwencja decyzji</h2><small>Decyzja została zapisana</small></div></div>
+ <div class="game-body"><div class="scene-large">✨</div>
+ <div class="story-line"><b>${c.text}</b><br><br>Świat i przyszłe wydarzenia zostały przeliczone. Ta decyzja pozostaje częścią Twojej historii.</div>
+ <div class="actions">${nx?`<button class="btn primary" onclick="openStoryEvent(ev('${nx.id}'))">▶ ${nx.title}</button>`:`<button class="btn primary" onclick="continueCurrentStory()">✨ Sprawdź, co wydarzy się dalej</button>`}
+ <button class="btn" onclick="closeGame();refreshHeroStory()">🏰 Wróć do kokpitu</button></div></div>`;
+};
+window.continueCurrentStory=function(){
+ const l=last(),e=l?ev(l.id):null,nx=follow(e);
+ if(nx){openStoryEvent(nx);return;}
+ if(typeof triggerContextualStoryEvent==="function")triggerContextualStoryEvent();
+};
+const oldTrigger=window.triggerContextualStoryEvent;
+window.triggerContextualStoryEvent=function(){
+ ensure();const e=chooseStoryEvent();if(e){openStoryEvent(e);return;}toast2("✨ Na razie nic nowego nie wydarzyło się w Twojej historii.");
+};
+const oldRefresh=window.refreshExpandedCockpit;
+window.refreshExpandedCockpit=function(){if(oldRefresh)oldRefresh();refreshHeroStory();};
+document.addEventListener("DOMContentLoaded",()=>setTimeout(refreshHeroStory,300));
+})();
 </script>
 </body></html>
