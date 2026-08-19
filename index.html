@@ -392,7 +392,7 @@ body{
 <div class="actions" id="heroActions">
  <button class="btn primary" onclick="continueCurrentStory()">▶ Kontynuuj historię</button>
  <button class="btn" onclick="triggerContextualStoryEvent()">✨ Nowe wydarzenie</button>
- <button class="btn" onclick="playableClick('family')">❤️ Rodzina</button>
+ <button class="btn" onclick="data-section="family"">❤️ Rodzina</button>
 </div>
  </div>
 </div>
@@ -477,7 +477,7 @@ body{
  </div>
  <div class="activities">
    <button class="activity" onclick="playableClick('letter')"><div class="aicon">✉️</div><b>Odbierz list</b><small>Pierwszy krok całej historii.</small></button>
-   <button class="activity" onclick="playableClick('family')"><div class="aicon">❤️</div><b>Rodzina</b><small>Rozmowa, emocje i relacje.</small></button>
+   <button class="activity" onclick="data-section="family""><div class="aicon">❤️</div><b>Rodzina</b><small>Rozmowa, emocje i relacje.</small></button>
    <button class="activity" onclick="playableClick('diagon')"><div class="aicon">🛍️</div><b>Ulica Pokątna</b><small>Rozpocznij zakupy.</small></button>
    <button class="activity" onclick="playableClick('gringotts')"><div class="aicon">🏦</div><b>Gringott</b><small>Rodzinny skarbiec.</small></button>
    <button class="activity" onclick="playableClick('wand')"><div class="aicon">🪄</div><b>Ollivander</b><small>Twoja pierwsza różdżka.</small></button>
@@ -1602,5 +1602,258 @@ const oldRefresh=window.refreshExpandedCockpit;
 window.refreshExpandedCockpit=function(){if(oldRefresh)oldRefresh();refreshHeroStory();};
 document.addEventListener("DOMContentLoaded",()=>setTimeout(refreshHeroStory,300));
 })();
+</script>
+
+<style>
+/* ===== V11 — SIDEBAR AS GAME NAVIGATION ===== */
+.menu button{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  width:100%;
+  text-align:left;
+  cursor:pointer;
+}
+.menu button:after{
+  content:"›";
+  margin-left:auto;
+  opacity:.35;
+  font-size:16px;
+  transition:.2s;
+}
+.menu button:hover:after{opacity:1;transform:translateX(2px)}
+.menu button .menu-sub{
+  display:block;
+  font-size:7px;
+  color:#69747b;
+  margin-top:2px;
+}
+.nav-hint{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-left:auto;
+  color:#76623b;
+  font-size:7px;
+}
+#gameNavPanel .game-body{padding-bottom:24px}
+.nav-section{
+  margin-top:14px;
+  padding:10px;
+  border:1px solid #28333a;
+  border-radius:13px;
+  background:linear-gradient(145deg,#0d1318,#080c10);
+}
+.nav-section h3{
+  margin:0 0 8px;
+  font-size:9px;
+  color:#d9c48b;
+}
+.nav-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+}
+.nav-tile{
+  padding:11px;
+  border:1px solid #29343b;
+  border-radius:11px;
+  background:#0b1015;
+  cursor:pointer;
+  text-align:left;
+  color:#d8dcde;
+}
+.nav-tile:hover{border-color:#806537;background:#11151a}
+.nav-tile b{display:block;font-size:9px}
+.nav-tile small{display:block;margin-top:4px;color:#737c82;font-size:7px;line-height:1.4}
+@media(max-width:600px){.nav-grid{grid-template-columns:1fr}}
+</style>
+<script>
+/* ===== V11 NAVIGATION HUB ===== */
+const GAME_SECTIONS={
+ character:{
+  icon:"🧙",title:"POSTAĆ",subtitle:"Rozwój, cechy i historia",
+  intro:"Tutaj zarządzasz tym, kim staje się Twoja postać. Statystyki nie są tylko liczbami — wpływają na dostępne wydarzenia i możliwości.",
+  groups:[
+   ["ROZWÓJ",[
+    ["🧠","Cechy","Odwaga, ambicja, ciekawość, empatia, niezależność i dyscyplina.","openCharacterStats"],
+    ["📜","Historia","Najważniejsze decyzje, wydarzenia i konsekwencje zapisane przez grę.","openStoryHistory"],
+    ["🎒","Ekwipunek","Różdżka, przedmioty, składniki, artefakty i rzeczy zdobyte podczas gry.","openInventoryHub"]
+   ]],
+   ["DZIAŁANIA",[
+    ["✨","Rozwijaj umiejętności","Ćwicz zaklęcia, latanie, pojedynki i inne zdolności.","openActivitiesHub"],
+    ["🎯","Cele roku","Wybierz lub zmień cele, które ukierunkowują wydarzenia danego roku.","openGoalsHub"]
+   ]]
+  ]
+ },
+ family:{
+  icon:"👨‍👩‍👧",title:"DOM I RODZINA",subtitle:"Rodzina, majątek i pochodzenie",
+  intro:"To nie jest statyczna karta rodziny. Tutaj poznajesz jej historię, relacje, sytuację finansową i rzeczy, które mogą zmieniać się przez całe życie.",
+  groups:[
+   ["RODZINA",[
+    ["🏠","Rodzina","Rodzice, ich zawody, relacje, charakter i aktualna sytuacja.","familyOriginScreen"],
+    ["📜","Pochodzenie","Status krwi, dziedzictwo, rodzinne sekrety i mroczna przeszłość.","familyOriginScreen"],
+    ["❤️","Relacje rodzinne","Rozmowy, konflikty, pomoc, wsparcie i ważne decyzje.","openFamilyRelations"]
+   ]],
+   ["MAJĄTEK",[
+    ["🪙","Finanse rodziny","Majątek, oszczędności, długi, dochody i wydatki.","openFamilyFinances"],
+    ["🏪","Rodzinne biznesy","Sklepy, firmy, inwestycje i możliwości rozwijania majątku.","openFamilyBusiness"]
+   ]]
+  ]
+ },
+ school:{
+  icon:"🏰",title:"HOGWART",subtitle:"Szkoła, lekcje i życie ucznia",
+  intro:"Hogwart to nie tylko plan lekcji. Każde miejsce może prowadzić do aktywności, znajomości, sekretów i wydarzeń.",
+  groups:[
+   ["NAUKA",[
+    ["📚","Lekcje","Przedmioty, oceny, egzaminy, nauczyciele i rozwój wiedzy.","openLessonsHub"],
+    ["📝","Egzaminy","Przygotowania, wyniki i konsekwencje nauki.","openExamsHub"]
+   ]],
+   ["ŻYCIE W SZKOLE",[
+    ["🧑‍🤝‍🧑","Znajomi","Przyjaźnie, rywale, konflikty, zauroczenia i wspólne wydarzenia.","openRelationsHub"],
+    ["🗺️","Eksploruj Hogwart","Wieże, lochy, biblioteka, Zakazany Las i sekrety zamku.","openHogwartsMap"],
+    ["🎒","Zajęcia dodatkowe","Kluby, koła, pojedynki i inne aktywności.","openActivitiesHub"]
+   ]]
+  ]
+ },
+ quidditch:{
+  icon:"🧹",title:"QUIDDITCH",subtitle:"Kariera sportowa",
+  intro:"Quidditch jest osobną ścieżką życia. Możesz zostać zawodnikiem, rozwijać konkretną pozycję albo całkowicie z niego zrezygnować.",
+  groups:[
+   ["KARIERA",[
+    ["🧹","Trening","Latane, refleks, szybkość, technika i trening pozycji.","openQuidditchTraining"],
+    ["🏆","Drużyna","Próby, skład, pozycja, mecze i rywalizacja.","openQuidditchTeam"],
+    ["📊","Statystyki","Postęp umiejętności i forma sportowa.","openQuidditchStats"]
+   ]],
+   ["RYWALIZACJA",[
+    ["🏟️","Mecze","Mecze szkolne i wydarzenia między szkołami.","openMatches"],
+    ["🥇","Turnieje","Międzyszkolne zawody i większe wydarzenia.","openTournaments"]
+   ]]
+  ]
+ },
+ relations:{
+  icon:"❤️",title:"RELACJE",subtitle:"Ludzie, przyjaźnie i konflikty",
+  intro:"Relacje mają pamięć. Ludzie reagują na to, co robisz, komu pomagasz, kogo zdradzasz i jak zmienia się Twoja historia.",
+  groups:[
+   ["LUDZIE",[
+    ["❤️","Najbliżsi","Najważniejsze osoby i aktualny poziom relacji.","openRelationsHub"],
+    ["⚔️","Rywalizacje","Konflikty, rywale i osoby, które mogą stać się przeciwnikami.","openRivalsHub"],
+    ["💌","Wątki osobiste","Przyjaźnie, zauroczenia i wydarzenia zależne od historii.","openPersonalThreads"]
+   ]],
+   ["SPOŁECZNOŚĆ",[
+    ["🏛️","Reputacja","Jak widzą Cię uczniowie, nauczyciele i świat czarodziejów.","openReputationHub"],
+    ["🤝","Sojusze","Osoby i grupy, które mogą stanąć po Twojej stronie.","openAlliancesHub"]
+   ]]
+  ]
+ },
+ magic:{
+  icon:"✨",title:"MAGIA",subtitle:"Zaklęcia, eliksiry i Czarna Magia",
+  intro:"Magia rozwija się wraz z Twoimi wyborami. Możesz zostać wybitnym uczniem, specjalistą od konkretnej dziedziny albo wejść w Czarną Magię.",
+  groups:[
+   ["NAUKA MAGII",[
+    ["✨","Zaklęcia","Poznane zaklęcia, poziomy i możliwość treningu.","openSpellsHub"],
+    ["🧪","Eliksiry","Składniki, warzenie, receptury i eksperymenty.","openPotionsHub"],
+    ["🪄","Pojedynki","Trening i realne pojedynki z konsekwencjami.","openDuelsHub"]
+   ]],
+   ["CIEMNA ŚCIEŻKA",[
+    ["🐍","Czarna Magia","Poziom zainteresowania, odkryte zaklęcia i konsekwencje.","openDarkMagicHub"],
+    ["🕯️","Zakazane artefakty","Rzadkie przedmioty i tajemnice związane z mroczną magią.","openArtifactsHub"]
+   ]]
+  ]
+ },
+ creatures:{
+  icon:"🐉",title:"MAGICZNE STWORZENIA",subtitle:"Magizoologia i Fantastyczne Zwierzęta",
+  intro:"Możesz rozwijać własną ścieżkę magizoologiczną, odkrywać stworzenia, pomagać im i trafiać na historie inspirowane światem Fantastycznych Zwierząt.",
+  groups:[
+   ["ODKRYWANIE",[
+    ["🐉","Stworzenia","Poznane gatunki, więzi i wiedza.","openCreaturesHub"],
+    ["🌲","Rezerwaty","Miejsca, ekspedycje i rzadkie stworzenia.","openReservesHub"]
+   ]],
+   ["AKCJE",[
+    ["🩹","Pomoc stworzeniom","Ratowanie, leczenie i opieka.","openCreatureCare"],
+    ["🧳","Badacze","Kontakty, ekspedycje i historie związane z magizoologią.","openResearchersHub"]
+   ]]
+  ]
+ },
+ world:{
+  icon:"🗺️",title:"ŚWIAT CZARODZIEJÓW",subtitle:"Mapa, miejsca i wydarzenia",
+  intro:"Poza Hogwartem istnieje cały świat. Niektóre miejsca odblokowują się dopiero przez konkretne decyzje, relacje albo cele.",
+  groups:[
+   ["MIEJSCA",[
+    ["🗺️","Mapa","Hogwart, Hogsmeade i kolejne odkrywane lokacje.","openWorldMap"],
+    ["🏘️","Hogsmeade","Sklepy, puby, zadania i spotkania.","openHogsmeade"],
+    ["🏛️","Ministerstwo","Prawo, kontakty, wydarzenia i późniejsza kariera.","openMinistry"]
+   ]],
+   ["FABUŁA",[
+    ["🐍","Wątek Voldemorta","Znaki, kontakty, propozycje i konsekwencje wyborów.","openVoldemortThread"],
+    ["🧙","Wątek Dumbledore'a","Zaufanie, sekrety i zadania.","openDumbledoreThread"],
+    ["📜","Główna historia","Najważniejsze wydarzenia i odgałęzienia Twojego życia.","openMainStory"]
+   ]]
+  ]
+ }
+};
+
+function navCall(name){
+  const fn=window[name];
+  if(typeof fn==="function"){fn();return;}
+  if(name==="familyOriginScreen"){familyOriginScreen();return;}
+  if(name==="openStoryHistory"){openStoryHistory();return;}
+  if(name==="openGoalsHub"){openGoalsHub();return;}
+  if(name==="openActivitiesHub"){openActivitiesHub();return;}
+  openPlaceholder(name);
+}
+
+function openPlaceholder(name){
+  const labels={
+   openCharacterStats:"Cechy i statystyki",openInventoryHub:"Ekwipunek",openFamilyRelations:"Relacje rodzinne",
+   openFamilyFinances:"Finanse rodziny",openFamilyBusiness:"Rodzinne biznesy",openLessonsHub:"Lekcje",
+   openExamsHub:"Egzaminy",openRelationsHub:"Znajomi i relacje",openHogwartsMap:"Mapa Hogwartu",
+   openQuidditchTraining:"Trening Quidditcha",openQuidditchTeam:"Drużyna Quidditcha",
+   openQuidditchStats:"Statystyki Quidditcha",openMatches:"Mecze",openTournaments:"Turnieje",
+   openRivalsHub:"Rywalizacje",openPersonalThreads:"Wątki osobiste",openReputationHub:"Reputacja",
+   openAlliancesHub:"Sojusze",openSpellsHub:"Zaklęcia",openPotionsHub:"Eliksiry",openDuelsHub:"Pojedynki",
+   openDarkMagicHub:"Czarna Magia",openArtifactsHub:"Zakazane artefakty",openCreaturesHub:"Magiczne stworzenia",
+   openReservesHub:"Rezerwaty",openCreatureCare:"Opieka nad stworzeniami",openResearchersHub:"Badacze",
+   openWorldMap:"Mapa świata",openHogsmeade:"Hogsmeade",openMinistry:"Ministerstwo",
+   openVoldemortThread:"Wątek Voldemorta",openDumbledoreThread:"Wątek Dumbledore'a",openMainStory:"Główna historia"
+  };
+  const title=labels[name]||"Moduł gry";
+  document.getElementById("gamePanel").innerHTML=`<button class="game-close" onclick="closeGame()">×</button>
+   <div class="game-head"><div class="scene-symbol">✨</div><div><h2>${title}</h2><small>Moduł świata gry</small></div></div>
+   <div class="game-body">
+    <div class="scene-large">✨</div>
+    <div class="story-line">Ten moduł jest już częścią nawigacji gry. Tutaj będzie wykonywana konkretna aktywność, podejmowane decyzje i przeglądane informacje związane z tym obszarem.</div>
+    <button class="btn primary" onclick="triggerContextualStoryEvent()">✨ Powiązane wydarzenie</button>
+   </div>`;
+  openGame();
+}
+
+function openGameNavigation(section){
+ const s=GAME_SECTIONS[section];if(!s)return;
+ const groups=s.groups.map(g=>`<div class="nav-section"><h3>${g[0]}</h3><div class="nav-grid">${
+   g[1].map(x=>`<button class="nav-tile" data-nav="${x[3]}"><b>${x[0]} ${x[1]}</b><small>${x[2]}</small></button>`).join("")
+  }</div></div>`).join("");
+ document.getElementById("gamePanel").innerHTML=`<button class="game-close" onclick="closeGame()">×</button>
+  <div class="game-head"><div class="scene-symbol">${s.icon}</div><div><h2>${s.title}</h2><small>${s.subtitle}</small></div></div>
+  <div class="game-body"><div class="story-line">${s.intro}</div>${groups}</div>`;
+ document.querySelectorAll("#gamePanel [data-nav]").forEach(b=>b.addEventListener("click",()=>navCall(b.dataset.nav)));
+ openGame();
+}
+
+function bindSidebarNavigation(){
+ const map={
+  character:"character",family:"family",school:"school",quidditch:"quidditch",
+  relations:"relations",magic:"magic",creatures:"creatures",world:"world"
+ };
+ document.querySelectorAll(".menu button").forEach(btn=>{
+   const key=btn.dataset.section || btn.getAttribute("data-key");
+   if(map[key]){
+     btn.addEventListener("click",()=>openGameNavigation(map[key]));
+     btn.title="Otwórz moduł";
+   }
+ });
+}
+document.addEventListener("DOMContentLoaded",bindSidebarNavigation);
 </script>
 </body></html>
